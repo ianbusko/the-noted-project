@@ -7,3 +7,6 @@ yarn.lock
 # Build directory
 /public
 .DS_Store
+
+# Secret Config
+.contentful.json
