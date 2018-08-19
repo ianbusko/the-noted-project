@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 import Header from '../components/header';
-import './index.css';
 
 const Layout = ({ children, data }) => (
   <div>
@@ -30,8 +29,13 @@ const Layout = ({ children, data }) => (
 
 Layout.propTypes = {
   children: PropTypes.func,
+  data: PropTypes.object,
 };
 
+Layout.defaultProps = {
+  children: () => {},
+  data: {},
+};
 export default Layout;
 
 export const query = graphql`
