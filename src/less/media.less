@@ -1,0 +1,51 @@
+@import (reference) "tnp-colors";
+@import (reference) "tnp-media-queries";
+
+.media.icon{
+  background-color:@blueGreen;
+  background-position: center;
+  background-repeat:no-repeat;
+  background-size: 60%;
+  border-radius:50%;
+  cursor:pointer;
+  height:@shareLinkHeight;
+  transition: all 0.3s ease-out;
+  width:@shareLinkHeight;
+
+  @media @phone, @smallScreen{
+    height:60px;
+    width:60px;
+  }
+
+  &:hover{
+    background-color: darken(@blueGreen, 10%);
+  }
+
+  &.twitter{
+    background-image: url(../images/twitter.svg);
+  }
+
+  &.facebook{
+    background-image: url(../images/facebook.svg);
+  }
+
+  &.dribbble{
+    background-image: url(../images/dribbble.svg);
+  }
+
+  &.instagram{
+    background-image: url(../images/instagram.svg);
+  }
+
+  &.soundcloud{
+    background-image: url(../images/soundcloud.svg);
+  }
+
+  &.vimeo{
+    background-image: url(../images/vimeo.svg);
+  }
+
+  &.photo{
+    background-image: url(../images/camera.svg);
+  }
+}

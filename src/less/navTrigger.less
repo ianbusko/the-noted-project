@@ -1,0 +1,61 @@
+@import (reference) "tnp-media-queries";
+@import (reference) "tnp-colors";
+
+/* NAV ICON */
+.nav-trigger{
+  cursor: pointer;
+  display:block;
+  height: 28px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  width: 33px;
+
+  @media @largeScreen{
+    display: none;
+  }
+
+  span{
+    background-color:@darkBrown;
+    border-radius:2px;
+    display:block;
+    height:3px;
+    left:0;
+    opacity:1;
+    position:absolute;
+    transform: rotate(0deg);
+    transform-origin: left center;
+    transition: .25s ease-in-out;
+    width:100%;
+
+    &:nth-child(1){
+      top:0px;
+    }
+
+    &:nth-child(2){
+      top: 12px;
+    }
+
+    &:nth-child(3){
+      top:24px;
+    }
+  }
+
+  &.nav-trigger--active{
+    span:nth-child(1){
+      left:4px;
+      top:1px;
+      transform:rotate(45deg);
+    }
+
+    span:nth-child(2){
+      width:0%;
+      opacity:0;
+    }
+
+    span:nth-child(3){
+      left:4px;
+      transform:rotate(-45deg);
+    }
+  }
+}

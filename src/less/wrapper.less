@@ -1,0 +1,36 @@
+@import (reference) "tnp-constants";
+
+@import (reference) "tnp-media-queries";
+
+.wrapper{
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+  min-height:calc(~"100vh - @{navHeight} - @{footerHeight}");
+
+  &.story{
+    min-height:calc(~"100vh - @{navHeight}");
+  }
+  
+  @media @phone, @smallScreen{
+    /* height of vh - header - height of mobile navigation bar */
+    min-height:calc(~"100vh - 144px");
+    // margin-top:@navHeight;
+  }
+
+  .divider{
+    padding:0;
+
+    hr{
+      margin:0 auto;
+    }
+  }
+  
+  > * {
+    padding:2rem;
+
+    @media @mediumScreen, @smallScreen, @phone{
+      padding: 1.5em;
+    }
+  }
+}
