@@ -40,6 +40,7 @@ const Layout = ({
         />
         <Navigation isStory={isStory} isPlain={isPlain} showLightMenu={isStory || isSplash} />
         <main>
+          {/* TODO: move this out of main */}
           { isStory && infoCards.length > 0
             && (
             <CardArea isActive={isCardActive}>
