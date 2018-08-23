@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery } from 'gatsby';
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 import Wrapper from '../components/wrapper';
@@ -10,6 +10,8 @@ import tile from '../images/tile.gif';
 import '../less/overrides.less';
 import '../less/layout.less';
 import '../less/fonts.less';
+
+import { SITE_TITLE_QUERY } from '../queries';
 
 const backgroundStyles = {
   backgroundColor: '#fef8f0',
@@ -20,15 +22,7 @@ const Layout = ({
   children, isStory, isPlain, isSplash, isCardActive, infoCards,
 }) => (
   <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
+    query={SITE_TITLE_QUERY}
     render={data => (
       <div style={(isPlain ? backgroundStyles : {})}>
         <Helmet
