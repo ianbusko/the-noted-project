@@ -65,7 +65,7 @@ Layout.propTypes = {
   isPlain: PropTypes.bool,
   isSplash: PropTypes.bool,
   isCardActive: PropTypes.bool,
-  infoCards: PropTypes.array,
+  infoCards: PropTypes.arrayOf(PropTypes.object),
 };
 
 Layout.defaultProps = {

@@ -7,9 +7,18 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-eslint',
+    'gatsby-plugin-less',
     {
       resolve: 'gatsby-source-contentful',
       options: Contentful,
+    },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'average',
+        ],
+      },
     },
   ],
 };

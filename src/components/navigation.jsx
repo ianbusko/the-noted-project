@@ -27,10 +27,6 @@ class Navigation extends React.Component {
     }
   }
 
-  getClasses(isStory, isSplash) {
-    return `${isStory ? 'header-row--story' : ''} ${isSplash ? 'header-row--splash' : ''}`;
-  }
-
   render() {
     const {
       isStory, isSplash, isPlain, showLightMenu,
@@ -39,13 +35,17 @@ class Navigation extends React.Component {
     return (
       <header
         role="navigation"
-        className={`header-row ${
-          this.getClasses(isStory, isSplash)
-        }${isMenuActive ? ' menu-active' : ''}`}
+        className={`header-row
+          ${isStory ? 'header-row--story' : ''}
+          ${isSplash ? 'header-row--splash' : ''}
+          ${isMenuActive ? ' menu-active' : ''}`
+        }
       >
         <section className={`tnp-header ${showLightMenu ? 'light' : ''}`}>
           <div className={`header-logo-wrapper ${isPlain ? 'plain' : ''}`}>
-            <a className="header-logo" href="\" />
+            <a className="header-logo" href="\">
+              <span style={{ display: 'none' }}>The Noted Project Home</span>
+            </a>
           </div>
           <nav className="header-links no-mobile">
             <a href="\team">
@@ -57,7 +57,7 @@ class Navigation extends React.Component {
             <a href="\thanks">
               Thanks
             </a>
-            <a href="http://blog.thenotedproject.org" target="_blank">
+            <a href="http://blog.thenotedproject.org" target="_blank" rel="noopener noreferrer">
               Blog
             </a>
           </nav>
@@ -69,15 +69,30 @@ class Navigation extends React.Component {
                 </span>
               </div>
               <div className="link-wrapper">
-                <a className="share-link email" href="mailto:?subject=The%20Noted%20Project&body=http://www.thenotedproject.org" target="_blank">
+                <a
+                  className="share-link email"
+                  href="mailto:?subject=The%20Noted%20Project&body=http://www.thenotedproject.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <span>
                     Email
                   </span>
                 </a>
-                <a className="share-link facebook" href="https://www.facebook.com/sharer/sharer.php?u=TheNotedProject.org" target="_blank">
+                <a
+                  className="share-link facebook"
+                  href="https://www.facebook.com/sharer/sharer.php?u=TheNotedProject.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Facebook
                 </a>
-                <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.thenotedproject.org&text=Share%20The%20Noted%20Project:" className="share-link twitter" target="_blank">
+                <a
+                  href="https://twitter.com/share?url=https%3A%2F%2Fwww.thenotedproject.org&text=Share%20The%20Noted%20Project:"
+                  className="share-link twitter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Twitter
                 </a>
               </div>

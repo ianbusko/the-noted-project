@@ -1,0 +1,61 @@
+@import (reference) "tnp-colors";
+@import (reference) "tnp-media-queries";
+
+@backgroundDepth : -100;
+
+.splash-background{
+  background-attachment:fixed;
+  background-color:@black;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: @backgroundDepth;
+
+  // TODO: configure background image
+  @media @phone, @smallScreen{
+    background-image: url('../images/noh-bo.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &:before{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color:@black;
+    content:'';
+    opacity:.6;
+    z-index:@backgroundDepth + 1;
+  }
+
+  iframe{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    z-index: @backgroundDepth;
+
+    @media @phone, @smallScreen{
+      display: none;
+    }
+
+    @media (min-aspect-ratio: 16/9) {
+      width: 100%;
+      height: 300%;
+      top: -100%;
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      width:300%;
+      height:100vh;
+      left:-100%;
+    }
+  }
+}

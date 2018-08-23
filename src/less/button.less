@@ -1,0 +1,46 @@
+@import (reference) "tnp-fonts";
+@import (reference) "tnp-media-queries";
+@import (reference) "tnp-colors";
+
+.link-button{
+  background-color:transparent;
+  border:2px solid @cream;
+  border-radius:3px;
+  color:@cream;
+  cursor:pointer;
+  display:inline-block;
+  font-size:1rem;
+  font-family:@minimo;
+  letter-spacing: 1px;
+  text-decoration:none;
+  text-transform:uppercase;
+  text-align: center;
+  outline:none;
+  padding:1rem 2rem;
+  transition: all 0.3s ease-in;
+
+  @media @mediumScreen{
+    font-size:.75rem;
+    padding: 1rem 1.5rem;
+  }
+
+  @media @smallScreen{
+    padding: 1rem 2rem;
+  }
+
+  &:hover,
+  &:active {
+    background-color:@cream;
+    color:@darkBrown;
+  }
+
+  &.dark{
+    border:2px solid @darkBrown;
+    color:@darkBrown;
+  
+    &:hover{
+      color:@cream;
+      background-color:@darkBrown;
+    }
+  }
+}

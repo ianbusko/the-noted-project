@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import '../less/navTrigger.less';
 
 const NavTrigger = ({ onTriggerClick, isActive }) => (
+  // eslint-disable-next-line
   <div
     role="button"
     className={`nav-trigger ${isActive ? 'nav-trigger--active' : ''}`}
