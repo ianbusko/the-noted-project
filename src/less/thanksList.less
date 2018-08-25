@@ -1,0 +1,40 @@
+@import (reference) 'tnp-fonts';
+@import (reference) 'tnp-colors';
+
+.thanks-list{
+  .thanks-list__items{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    list-style: none;
+    margin: 0 0 2rem 0;
+    padding:0;
+    text-align: center;
+    width:100%;
+  
+    > .thanks-list__item {
+      flex:1 0 33%;
+      margin-bottom:.5em;
+      min-width:250px;
+    }
+  }
+}
+
+.thanks-list__title{
+  border-bottom: 1px solid @lightBrown;
+  color:@darkBrown;
+  font-family:@minimo;
+  font-size: 1em;
+  margin-bottom: 2rem;
+  text-transform:uppercase;
+  font-weight: normal;
+  padding: 1em;
+  text-align: center;
+}
+
+.thanks-list__item{
+  font-family: @average;
+  font-size: 1.25em;
+  line-height: 1.45em;
+}

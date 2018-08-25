@@ -1,11 +1,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PlainPageLayout from '../layouts/plainPage';
+import PlainChildContent from '../components/plainPageContent/childContent';
+import '../less/plainPage.less';
 
-const PlainPage = () => (
+// eslint-disable-next-line
+const PlainPage = ({data}) => (
   <PlainPageLayout>
-    <div />
-    <span>Welcome to the new plain page!</span>
+    <PlainChildContent contentData={data.contentfulLayout.content[0]} />
   </PlainPageLayout>
 );
 
@@ -18,6 +20,7 @@ export const pageQuery = graphql`
       title
       content{
         __typename
+        ... layoutThanks
       }
     }
   }

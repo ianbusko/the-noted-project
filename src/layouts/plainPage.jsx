@@ -6,7 +6,6 @@ import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 import Wrapper from '../components/wrapper';
 import tile from '../images/tile.gif';
-// import { SITE_TITLE_QUERY } from '../queries';
 import '../less/overrides.less';
 import '../less/layout.less';
 import '../less/fonts.less';
