@@ -1,6 +1,12 @@
 @import (reference) 'tnp-fonts';
 @import (reference) 'tnp-colors';
 
+body{
+  background-color: @cream;
+  // TODO: fix for webpack
+  background-image: 'url(/images/tile.gif)';
+}
+
 article{
   align-items: center;
   display: flex;
@@ -11,7 +17,7 @@ article{
     margin-bottom: 2rem;
   }
 
-  > * {
+  > *:not(a) {
     max-width: 55em;
     width:100%;
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlainContentTypes from '../../plainContentTypes';
 import ThanksContent from './thanksContent';
+import ContactContent from './contactContent';
 
 function getSwitch(data) {
   // eslint-disable-next-line
@@ -13,6 +14,10 @@ function getSwitch(data) {
           specialThanks={data.specialThanks}
           kickstarterSupporters={data.kickstarterSupporters}
         />
+      );
+    case PlainContentTypes.CONTACT_CONTENT:
+      return (
+        <ContactContent emailAddress={data.contactEmailAddress} />
       );
     default:
       return null;

@@ -21,6 +21,7 @@ export const pageQuery = graphql`
       content{
         __typename
         ... layoutThanks
+        ... layoutContact
       }
     }
   }
