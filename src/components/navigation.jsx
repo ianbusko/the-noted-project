@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MobileMenu from './mobileMenu';
 import NavTrigger from './navTrigger';
+import ShareLink from './shareLink';
 import '../less/header.less';
-import '../less/shareLink.less';
 
 class Navigation extends React.Component {
   constructor() {
@@ -64,38 +64,26 @@ class Navigation extends React.Component {
           </nav>
           <div className="header-media no-mobile">
             <div className="share-links">
-              <div className="share-link placeholder">
-                <span>
-                  Share
-                </span>
-              </div>
+              <ShareLink
+                linkType="placeholder"
+                linkText="Share"
+              />
               <div className="link-wrapper">
-                <a
-                  className="share-link email"
-                  href="mailto:?subject=The%20Noted%20Project&body=http://www.thenotedproject.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>
-                    Email
-                  </span>
-                </a>
-                <a
-                  className="share-link facebook"
-                  href="https://www.facebook.com/sharer/sharer.php?u=TheNotedProject.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Facebook
-                </a>
-                <a
-                  href="https://twitter.com/share?url=https%3A%2F%2Fwww.thenotedproject.org&text=Share%20The%20Noted%20Project:"
-                  className="share-link twitter"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Twitter
-                </a>
+                <ShareLink
+                  linkType="email"
+                  linkText="Email"
+                  linkUrl="mailto:?subject=The%20Noted%20Project&body=http://www.thenotedproject.org"
+                />
+                <ShareLink
+                  linkType="facebook"
+                  linkText="Facebook"
+                  linkUrl="https://www.facebook.com/sharer/sharer.php?u=TheNotedProject.org"
+                />
+                <ShareLink
+                  linkType="twitter"
+                  linkText="Twitter"
+                  linkUrl="https://twitter.com/share?url=https%3A%2F%2Fwww.thenotedproject.org&text=Share%20The%20Noted%20Project:"
+                />
               </div>
             </div>
           </div>
