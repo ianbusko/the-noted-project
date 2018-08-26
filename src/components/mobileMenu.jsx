@@ -16,25 +16,23 @@ const MobileMenu = () => (
         <br />
         #THENOTEDPROJECT
       </div>
-      <div className="horizontal icons grid">
-        <div className="horizontal row">
-          <a
-            className="facebook media icon"
-            href="https://www.facebook.com/sharer/sharer.php?u=TheNotedProject.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span style={{ display: 'none' }}>Share on Facebook</span>
-          </a>
-          <a
-            className="twitter media icon"
-            href="https://twitter.com/share?url=https%3A%2F%2Fwww.thenotedproject.org&text=Share%20The%20Noted%20Project:"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span style={{ display: 'none' }}>Share on Twitter</span>
-          </a>
-        </div>
+      <div className="mobile-menu__share">
+        <a
+          className="facebook media icon"
+          href="https://www.facebook.com/sharer/sharer.php?u=TheNotedProject.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span style={{ display: 'none' }}>Share on Facebook</span>
+        </a>
+        <a
+          className="twitter media icon"
+          href="https://twitter.com/share?url=https%3A%2F%2Fwww.thenotedproject.org&text=Share%20The%20Noted%20Project:"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span style={{ display: 'none' }}>Share on Twitter</span>
+        </a>
       </div>
     </div>
   </section>
