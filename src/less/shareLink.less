@@ -1,6 +1,6 @@
-@import (reference) "tnp-media-queries";
-@import (reference) "tnp-colors";
-@import (reference) "tnp-fonts";
+@import (reference) 'tnp-media-queries';
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-fonts';
 
 /* VARIABLES */
 @shareLinkHeight: 50px;
@@ -12,58 +12,58 @@
 @creamDark: #dfd9d1;
 
 /* PRESENTATION */
-.share-link{
-  background-color:@cream;
+.share-link {
+  background-color: @cream;
   background-position: center right 1rem;
-  background-repeat:no-repeat;
-  background-size:24px;
-  border-radius:100px;
-  color:@blueGreen;
-  cursor:pointer;
-  display:block;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  border-radius: 100px;
+  color: @blueGreen;
+  cursor: pointer;
+  display: block;
   font-family: @festivo;
   padding: 1rem;
   text-align: left;
-  text-decoration:none;
+  text-decoration: none;
   text-transform: uppercase;
   transition: all 0.2s ease-in;
   width: 165px;
 
   &.email,
-  &.story{
-    &:hover{
+  &.story {
+    &:hover {
       background-color: @creamDark;
     }
   }
 
-  &.email{
+  &.email {
     background-image: url(../images/email.svg);
   }
 
-  &.twitter{
+  &.twitter {
     background-color: @twitterBlue;
     background-image: url(../images/twitter.svg);
-    color:@cream;
-    &:hover{
+    color: @cream;
+    &:hover {
       background-color: @twitterBlueDark;
     }
   }
 
-  &.facebook{
+  &.facebook {
     background-color: @facebookBlue;
     background-image: url(../images/facebook.svg);
-    color:@cream;
-    &:hover{
+    color: @cream;
+    &:hover {
       background-color: @facebookBlueDark;
     }
   }
 
-  &.story{
-    position:relative;
+  &.story {
+    position: relative;
 
-    &:after{
+    &:after {
       position: absolute;
-      content: "";
+      content: '';
       display: inline-block;
       width: 1em;
       height: 1em;
@@ -71,51 +71,54 @@
       border-top: 0.2em solid @blueGreen;
       transform: rotate(45deg) translateY(83%);
       margin-right: 0.5em;
-      margin-bottom: .5em;
+      margin-bottom: 0.5em;
       right: 0;
-      top: .5em;
+      top: 0.5em;
     }
   }
 
-  &.placeholder{
-    background-color:@blueGreen;
+  &.placeholder {
+    background-color: @blueGreen;
     background-image: url(../images/share.svg);
-    color:@cream;
+    color: @cream;
 
-    @media @smallScreen, @phone{
-      display:none;
+    @media @smallScreen, @phone {
+      display: none;
     }
   }
 }
 /* ANIMATIONS */
-.share-links{
-  @media @largeScreen{
-    height:@shareLinkHeight;
+.share-links {
+  // Fix some height issue
+  z-index: 5;
 
-    .link-wrapper{
+  @media @largeScreen {
+    height: @shareLinkHeight;
+
+    .link-wrapper {
       height: @shareLinkHeight;
       transition: height 0.3s ease-in;
     }
 
-    .share-link{
+    .share-link {
       will-change: opacity;
-      &:not(.placeholder){
-          opacity:0;
-          pointer-events:none;
+      &:not(.placeholder) {
+        opacity: 0;
+        pointer-events: none;
       }
     }
 
-    &:hover{
-      .share-link.placeholder{
-          opacity:0;
+    &:hover {
+      .share-link.placeholder {
+        opacity: 0;
       }
 
-      .link-wrapper{
+      .link-wrapper {
         height: 184px;
 
-        .share-link:not(.placeholder){
-            opacity:1;
-            pointer-events: all;
+        .share-link:not(.placeholder) {
+          opacity: 1;
+          pointer-events: all;
         }
       }
     }
@@ -123,72 +126,71 @@
 }
 
 /* POSITIONS */
-.share-links{
-  .share-link.placeholder{
-    width:100%;
+.share-links {
+  .share-link.placeholder {
+    width: 100%;
 
-    @media @phone, @smallScreen{
-      display:none;
+    @media @phone, @smallScreen {
+      display: none;
     }
   }
 
-  .link-wrapper{
-    .share-link{
+  .link-wrapper {
+    .share-link {
       width: 100%;
     }
   }
 }
 
-.share-link{
+.share-link {
   height: @shareLinkHeight;
 
-  &.placeholder{
-    position:absolute;
-    left:0;
-    right:0;
+  &.placeholder {
+    position: absolute;
+    left: 0;
+    right: 0;
   }
 
-  span{
-    display:block;
-    text-align:center;
-    pointer-events:none;
-    width:calc(~"100% - 25px");
+  span {
+    display: block;
+    text-align: center;
+    pointer-events: none;
+    width: calc(~'100% - 25px');
   }
 }
 
-.link-wrapper{
+.link-wrapper {
   height: 200px;
   position: relative;
   transition: height 0.3s ease-out;
   will-change: height;
 
-  @media @largeScreen{
-    .share-link{
+  @media @largeScreen {
+    .share-link {
       position: absolute;
-      left:0;
-      right:0;
+      left: 0;
+      right: 0;
     }
 
-    .share-link:first-child{
-      top:0;
+    .share-link:first-child {
+      top: 0;
     }
 
-    .share-link:nth-of-type(1){
-      top:50%;
+    .share-link:nth-of-type(1) {
+      top: 50%;
       transform: translateY(-50%);
     }
 
-    .share-link:last-of-type{
-      bottom:0;
+    .share-link:last-of-type {
+      bottom: 0;
     }
   }
 
-  @media @phone, @smallScreen{
-    height:auto;
+  @media @phone, @smallScreen {
+    height: auto;
 
-    .share-link:not(:last-child){
-      margin-bottom:1rem;
+    .share-link:not(:last-child) {
+      margin-bottom: 1rem;
     }
   }
-
 }
