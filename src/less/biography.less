@@ -1,0 +1,96 @@
+@import (reference) 'tnp-media-queries';
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-fonts';
+
+.biography{
+  align-items: center;
+  display: flex;
+  margin-bottom: 2rem;
+
+  @media @phone{
+    flex-direction: column;
+  }
+
+  & > * {
+		margin:.5rem;
+
+		@media @phone{
+			&:last-child{
+				margin:0;
+			}
+		}
+	}
+
+	@media @smallScreen, @largeScreen{
+		&:nth-child(odd){
+			flex-direction:row-reverse;
+			text-align:right;
+
+			.biography__images{
+				flex-direction:row-reverse;
+			}
+		}
+	}
+}
+
+.biography__images{
+  align-items: center;
+	display: flex;
+	flex-wrap: wrap-reverse;
+	justify-content: center;
+	margin:0.5rem;
+
+	& > * {
+		margin:0.5rem;
+	}
+
+	@media @phone{
+		flex-direction:column-reverse;
+
+		& > * {
+			margin:0;
+		}
+	}
+}
+
+.biography__social-links{
+  display:flex;
+	flex-direction:column;
+	width:auto;
+
+	& > *{
+		margin: .5rem 0;
+	}
+
+	@media @phone{
+		flex-direction:row;
+		margin:0;
+
+		& > * {
+			margin: 0 .5rem;
+		}
+	}
+}
+
+.biography__description{
+  flex: 1 1 250px;
+  
+  & > * {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.biography__name{
+  color: @darkBrown;
+  font-family: @minimo;
+  font-size: 2em;
+  font-weight: normal;
+}
+
+.biography__role{
+  color:@lightBrown;
+  font-family:@minimoBold;
+  font-size:1em;
+  text-transform: uppercase;
+  font-weight: normal;
+}

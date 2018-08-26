@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PlainContentTypes from '../../plainContentTypes';
 import ThanksContent from './thanksContent';
 import ContactContent from './contactContent';
+import TeamContent from './teamContent';
 
 function getSwitch(data) {
   // eslint-disable-next-line
@@ -10,14 +11,27 @@ function getSwitch(data) {
     case PlainContentTypes.THANKS_CONTENT:
       return (
         <ThanksContent
-          key={data.contentType}
+          key={`${data.contentType}`}
           specialThanks={data.specialThanks}
           kickstarterSupporters={data.kickstarterSupporters}
         />
       );
     case PlainContentTypes.CONTACT_CONTENT:
       return (
-        <ContactContent emailAddress={data.contactEmailAddress} />
+        <ContactContent
+          emailAddress={data.contactEmailAddress}
+          key={`${data.contentType}`}
+        />
+      );
+    case PlainContentTypes.TEAM_CONTENT:
+      return (
+        <TeamContent
+          pageHeader={data.pageHeader}
+          pageTextHtml={data.pageText.childMarkdownRemark.html}
+          biographies={data.biographies}
+          socialLinks={data.socialLinks}
+          key={`${data.contentType}`}
+        />
       );
     default:
       return null;

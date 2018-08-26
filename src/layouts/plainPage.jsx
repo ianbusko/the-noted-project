@@ -13,6 +13,7 @@ import '../less/fonts.less';
 const backgroundStyles = {
   backgroundColor: '#fef8f0',
   backgroundImage: `url('${tile}')`,
+  position: 'relative',
 };
 
 const PlainPageLayout = ({ children }) => (

@@ -8,6 +8,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-eslint',
     'gatsby-plugin-less',
+    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-source-contentful',
       options: Contentful,

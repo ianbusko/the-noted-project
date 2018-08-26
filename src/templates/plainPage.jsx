@@ -22,6 +22,7 @@ export const pageQuery = graphql`
         __typename
         ... layoutThanks
         ... layoutContact
+        ... layoutAboutUsFragment
       }
     }
   }
