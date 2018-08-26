@@ -42,7 +42,7 @@ const TeamContent = ({ pageHeader, pageTextHtml, biographies }) => (
       dangerouslySetInnerHTML={{ __html: pageTextHtml }}
     />
     <h1>Our Team</h1>
-    <hr />
+    <hr style={{ marginBottom: '2rem' }} />
     {GetBios(biographies)}
   </article>
 );
