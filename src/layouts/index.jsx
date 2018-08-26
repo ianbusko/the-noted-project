@@ -16,6 +16,7 @@ import { SITE_TITLE_QUERY } from '../queries';
 const backgroundStyles = {
   backgroundColor: '#fef8f0',
   backgroundImage: `url('${tile}')`,
+  position: 'relative',
 };
 
 const Layout = ({

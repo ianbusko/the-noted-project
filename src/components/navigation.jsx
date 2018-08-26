@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MobileMenu from './mobileMenu';
 import NavTrigger from './navTrigger';
 import '../less/header.less';
+import '../less/shareLink.less';
 
 class Navigation extends React.Component {
   constructor() {
