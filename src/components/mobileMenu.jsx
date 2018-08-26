@@ -1,14 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import '../less/mobileMenu.less';
 import '../less/media.less';
 
-const MobileMenu = () => (
+const MobileMenu = ({ links }) => (
   <section className="mobile-menu">
     <ul>
-      <li><a href="\team">Our Team</a></li>
-      <li><a href="\contact">Contact</a></li>
-      <li><a href="\thanks">Thanks</a></li>
-      <li><a href="http://blog.thenotedproject.org" target="_blank" rel="noopener noreferrer">Blog</a></li>
+      {
+        links.map(link => (
+          <li key={`li-${link.slug}`}>
+            <Link
+              to={`${link.slug}`}
+              key={`${link.slug}`}
+            >
+              {link.title}
+            </Link>
+          </li>
+        ))
+      }
+      <li>
+        <a href="http://blog.thenotedproject.org" target="_blank" rel="noopener noreferrer">
+          Blog
+        </a>
+      </li>
     </ul>
     <div className="header-media">
       <div className="share-tnp">
@@ -37,5 +52,12 @@ const MobileMenu = () => (
     </div>
   </section>
 );
+
+MobileMenu.propTypes = {
+  links: PropTypes.arrayOf(PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  })).isRequired,
+};
 
 export default MobileMenu;

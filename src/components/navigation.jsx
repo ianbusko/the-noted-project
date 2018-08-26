@@ -35,7 +35,11 @@ class Navigation extends React.Component {
       isStory, isSplash, isPlain, showLightMenu, data,
     } = this.props;
     const { isMenuActive } = this.state;
-    const links = get(data, 'allContentfulLayout.edges');
+    const links = get(data, 'allContentfulLayout.edges')
+      .map(edge => ({
+        slug: edge.node.slug,
+        title: edge.node.title,
+      }));
 
     return (
       <header
@@ -53,12 +57,12 @@ class Navigation extends React.Component {
             </a>
           </div>
           <nav className="header-links no-mobile">
-            {links.map(edge => (
+            {links.map(link => (
               <Link
-                to={`${edge.node.slug}`}
-                key={`${edge.node.slug}`}
+                to={`${link.slug}`}
+                key={`${link.slug}`}
               >
-                {edge.node.title}
+                {link.title}
               </Link>
             ))}
             <a href="http://blog.thenotedproject.org" target="_blank" rel="noopener noreferrer">
@@ -90,9 +94,15 @@ class Navigation extends React.Component {
               </div>
             </div>
           </div>
-          <NavTrigger onTriggerClick={this.onNavTriggerClick} isActive={isMenuActive} />
+          <NavTrigger
+            onTriggerClick={this.onNavTriggerClick}
+            isActive={isMenuActive}
+          />
         </section>
-        <MobileMenu isActive={isMenuActive} />
+        <MobileMenu
+          isActive={isMenuActive}
+          links={links}
+        />
       </header>
     );
   }
@@ -112,7 +122,7 @@ Navigation.propTypes = {
         }),
       })),
     }),
-  }),
+  }).isRequired,
 };
 
 Navigation.defaultProps = {
@@ -120,7 +130,6 @@ Navigation.defaultProps = {
   isSplash: false,
   isPlain: false,
   showLightMenu: false,
-  data: null,
 };
 
 // export default Navigation;
