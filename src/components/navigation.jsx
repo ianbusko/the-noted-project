@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StaticQuery, graphql, Link } from 'gatsby';
+import get from 'lodash/get';
 import MobileMenu from './mobileMenu';
 import NavTrigger from './navTrigger';
 import ShareLink from './shareLink';
 import '../less/header.less';
 
 class Navigation extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isMenuActive: false,
     };
@@ -30,9 +32,11 @@ class Navigation extends React.Component {
 
   render() {
     const {
-      isStory, isSplash, isPlain, showLightMenu,
+      isStory, isSplash, isPlain, showLightMenu, data,
     } = this.props;
     const { isMenuActive } = this.state;
+    const links = get(data, 'allContentfulLayout.edges');
+
     return (
       <header
         role="navigation"
@@ -49,15 +53,14 @@ class Navigation extends React.Component {
             </a>
           </div>
           <nav className="header-links no-mobile">
-            <a href="\team">
-              Our Team
-            </a>
-            <a href="\contact">
-              Contact
-            </a>
-            <a href="\thanks">
-              Thanks
-            </a>
+            {links.map(edge => (
+              <Link
+                to={`${edge.node.slug}`}
+                key={`${edge.node.slug}`}
+              >
+                {edge.node.title}
+              </Link>
+            ))}
             <a href="http://blog.thenotedproject.org" target="_blank" rel="noopener noreferrer">
               Blog
             </a>
@@ -100,6 +103,16 @@ Navigation.propTypes = {
   isSplash: PropTypes.bool,
   isPlain: PropTypes.bool,
   showLightMenu: PropTypes.bool,
+  data: PropTypes.shape({
+    allContentfulLayout: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.shape({
+        node: PropTypes.shape({
+          slug: PropTypes.string,
+          title: PropTypes.string,
+        }),
+      })),
+    }),
+  }),
 };
 
 Navigation.defaultProps = {
@@ -107,6 +120,26 @@ Navigation.defaultProps = {
   isSplash: false,
   isPlain: false,
   showLightMenu: false,
+  data: null,
 };
 
-export default Navigation;
+// export default Navigation;
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query NavigationQuery {
+        allContentfulLayout{
+          edges{
+            node{
+              slug
+              title
+            }
+          }
+        }
+      }
+    `}
+    render={
+      data => <Navigation data={data} {...props} />
+    }
+  />
+);
