@@ -1,12 +1,15 @@
 import React from 'react';
 import Layout from '../layouts/index';
+import withMetadata from '../layouts/withMetadata';
 import SplashBackground from '../components/splashBackground';
 import SplashStoryLink from '../components/splashStoryLink';
 import logo from '../images/logo-icon.svg';
 import '../less/splash.less';
 
+const LayoutWithMetadata = withMetadata(Layout);
+
 const IndexPage = () => (
-  <Layout isSplash>
+  <LayoutWithMetadata isSplash>
     <section className="splash__title">
       <img
         src={logo}
@@ -31,7 +34,7 @@ const IndexPage = () => (
     </section>
 
     <SplashBackground />
-  </Layout>
+  </LayoutWithMetadata>
 );
 
 export default IndexPage;

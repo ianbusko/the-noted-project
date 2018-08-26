@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 import Wrapper from '../components/wrapper';
@@ -16,39 +15,30 @@ const backgroundStyles = {
   position: 'relative',
 };
 
-const PlainPageLayout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }`}
-    render={data => (
-      <div style={backgroundStyles}>
-        <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
-        />
-        <Navigation isPlain />
-        <main>
-          <Wrapper>
-            {children}
-          </Wrapper>
-        </main>
-        <Footer />
-      </div>
-    )}
-  />
+const PlainPageLayout = ({ children, metaData }) => (
+  <div style={backgroundStyles}>
+    <Helmet
+      title={metaData.title}
+      meta={[
+        { name: 'description', content: 'Sample' },
+        { name: 'keywords', content: 'sample, something' },
+      ]}
+    />
+    <Navigation isPlain />
+    <main>
+      <Wrapper>
+        {children}
+      </Wrapper>
+    </main>
+    <Footer />
+  </div>
 );
 
 PlainPageLayout.propTypes = {
   children: PropTypes.node.isRequired,
+  metaData: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default PlainPageLayout;

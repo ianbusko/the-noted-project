@@ -1,14 +1,17 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PlainPageLayout from '../layouts/plainPage';
+import withMetadata from '../layouts/withMetadata';
 import PlainChildContent from '../components/plainPageContent/childContent';
 import '../less/plainPage.less';
 
+const PlainPageWithMetadata = withMetadata(PlainPageLayout);
+
 // eslint-disable-next-line
 const PlainPage = ({data}) => (
-  <PlainPageLayout>
+  <PlainPageWithMetadata>
     <PlainChildContent contentData={data.contentfulLayout.content[0]} />
-  </PlainPageLayout>
+  </PlainPageWithMetadata>
 );
 
 export default PlainPage;
