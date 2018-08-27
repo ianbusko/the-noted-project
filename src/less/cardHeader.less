@@ -1,0 +1,36 @@
+@import (reference) 'tnp-constants';
+
+/* LAYOUT */
+.card-header {
+  align-items: center;
+  background-color: @black;
+  background-size: cover;
+  display: flex;
+  height: 235px;
+  justify-content: center;
+  line-height: 1.1em;
+  padding: 2em;
+  position: relative;
+
+  &:after {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: @black;
+    opacity: 0.6;
+    position: absolute;
+    z-index: 1;
+  }
+
+  h1 {
+    color: @cream;
+    font-family: @festivo;
+    font-size: 2rem;
+    line-height: 1.1em;
+    max-width: 210px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+}

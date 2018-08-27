@@ -1,0 +1,145 @@
+@import (reference) 'tnp-constants';
+
+.card-content {
+  background-color: @darkBrown;
+  padding: 2rem;
+  text-align: center;
+
+  & > * {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  & > *:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  .subtitle {
+    &:after {
+      content: '';
+      display: block;
+    }
+  }
+}
+
+/* DISPLAY */
+.card-content {
+  h2 {
+    color: @lightBrown;
+    font-family: @minimoBold;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: @cream;
+    line-height: 1.5em;
+    text-align: left;
+  }
+
+  a {
+    color: @cream;
+    text-decoration: none;
+  }
+
+  .subtitle {
+    color: @lightBrown;
+    font-family: @minimoBold;
+    font-size: 1em;
+    position: relative;
+    text-transform: uppercase;
+
+    &:after {
+      border-bottom: 1px solid @lightBrown;
+      padding-top: 0.25em;
+    }
+  }
+
+  .link-list {
+    h3 {
+      color: @cream;
+      font-family: @minimo;
+      font-size: 1em;
+      letter-spacing: 1px;
+      margin-bottom: 0.5em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+  }
+
+  .card-links {
+    text-align: left;
+
+    .card-link {
+      color: @cream;
+      line-height: 1.5em;
+      list-style: disc;
+      font-size: 0.95em;
+      margin-bottom: 0.25em;
+      font-family: @average;
+    }
+  }
+
+  .card-source {
+    font-size: 0.75em;
+
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.info-card {
+  &.active {
+    transform: none;
+  }
+}
+
+.close-area {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  z-index: 999;
+
+  @media @phone, @smallScreen {
+    transform: translate(0, 0);
+  }
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  pointer-events: auto;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  width: 425px;
+  will-change: transform;
+  z-index: 160;
+
+  @media @phone, @smallScreen {
+    margin-bottom: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .view-all {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+}
+
+/* DISPLAY */
+.info-card {
+  background-color: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ANIMATIONS */
+.info-card {
+  transform: translateX(calc(~'100% + 2rem'));
+}

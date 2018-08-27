@@ -1,17 +1,17 @@
-@import (reference) "tnp-colors";
-@import (reference) "tnp-fonts";
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-fonts';
 
 @lightestBrown: #d8c8b2;
 
-.info-target{
+.info-target {
   border-bottom: 2px solid @lightestBrown;
   box-shadow: inset 0 -4px 0 @lightestBrown;
   color: @darkBrown;
   font-weight: bold;
   transition: background 0.2s ease-in;
-  white-space:nowrap;
+  white-space: nowrap;
 
-  &:hover{
+  &:hover {
     background: @lightestBrown;
   }
 }
@@ -20,7 +20,7 @@
 /* POSITIONING */
 .card-area {
   height: 100%;
-  overflow:hidden;
+  overflow: hidden;
   pointer-events: none;
   position: fixed;
   right: 0;
@@ -28,14 +28,14 @@
   width: 100%;
   z-index: 150;
 
-  &:after{
-    background: rgba(0,0,0,0.8);
+  &:after {
+    background: rgba(0, 0, 0, 0.8);
     content: '';
     display: block;
     height: 100%;
     pointer-events: none;
     position: fixed;
-    bottom:0;
+    bottom: 0;
     left: 0;
     top: 0;
     width: 100%;
@@ -43,18 +43,18 @@
   }
 }
 
-.view-all{
-  color:@cream;
-  display:none;
+.view-all {
+  color: @cream;
+  display: none;
   font-family: @minimoBold;
-  font-size: .75em;
+  font-size: 0.75em;
   text-transform: uppercase;
 }
 
-.card-area{
-  &:after{
+.card-area {
+  &:after {
     opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0,0,0.3,1);
+    transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
   }
 }
 
@@ -67,14 +67,14 @@
   }
 }
 
-// TODO: when the card 
-.card--loaded{
-  &.card-area{
-    height:100%;
-    overflow-y:auto;
+// TODO: when the card
+.card--loaded {
+  &.card-area {
+    height: 100%;
+    overflow-y: auto;
   }
 
-  .info-card{
+  .info-card {
     transform: none;
   }
 }
@@ -84,30 +84,30 @@
   transition: transform 130ms ease-in;
 }
 
-.card--visible.card-area--loaded  .info-card {
+.card--visible.card-area--loaded .info-card {
   transition: transform 330ms ease-out;
 }
 
-#loading-spinner{
+#loading-spinner {
   position: absolute;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-  z-index:1;
+  z-index: 1;
 
-  path{
+  path {
     fill: @cream;
   }
 }
 
-.card-area{
-  #loading-spinner{
+.card-area {
+  #loading-spinner {
     opacity: 0;
   }
 
-  &.card--loading{
-    #loading-spinner{
+  &.card--loading {
+    #loading-spinner {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1.5);
     }

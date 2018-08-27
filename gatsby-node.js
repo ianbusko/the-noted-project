@@ -5,19 +5,25 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    // const storyPage = path.resolve('./src/templates/story.js');
+    const storyPage = path.resolve('./src/templates/story.jsx');
     const plainPage = path.resolve('./src/templates/plainPage.jsx');
     resolve(
       graphql(
         `
           {
-            allContentfulLayout
-            {
+            allContentfulLayout{
               edges{
                 node{
                   slug
                 }
               }  
+            }
+            allContentfulStory{
+              edges{
+                node{
+                  slug
+                }
+              }
             }
           }
         `,
@@ -31,6 +37,17 @@ exports.createPages = ({ graphql, actions }) => {
           createPage({
             path: `${page.node.slug}`,
             component: plainPage,
+            context: {
+              slug: page.node.slug,
+            },
+          });
+        });
+
+        const storyPages = result.data.allContentfulStory.edges;
+        storyPages.forEach((page) => {
+          createPage({
+            path: `/story/${page.node.slug}`,
+            component: storyPage,
             context: {
               slug: page.node.slug,
             },

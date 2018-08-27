@@ -39,9 +39,7 @@ function getSwitch(data) {
 }
 
 const PlainChildContent = ({ contentData }) => (
-  <React.Fragment>
-    {getSwitch(contentData)}
-  </React.Fragment>
+  <React.Fragment>{getSwitch(contentData)}</React.Fragment>
 );
 
 PlainChildContent.propTypes = {

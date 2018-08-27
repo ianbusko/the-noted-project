@@ -1,0 +1,94 @@
+@import (reference) 'tnp-media-queries';
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-fonts';
+
+.quote-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  .quote-content__quote {
+    color: @cream;
+    font-size: 3.5rem;
+    font-family: @minimoRegular;
+    line-height: 1em;
+    max-width: 680px;
+    text-align: center;
+
+    &:before {
+      content: '"';
+    }
+
+    &:after {
+      content: '"';
+    }
+
+    &.quote-content__quote--bordered {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        width: 136px;
+      }
+
+      &:before {
+        border-top: 3px solid @lightBrown;
+        padding-bottom: 2rem;
+      }
+
+      &:after {
+        border-bottom: 3px solid @lightBrown;
+        padding-top: 2rem;
+      }
+    }
+
+    @media @smallScreen, @phone {
+      font-size: 2rem;
+    }
+
+    @media @largeScreen {
+      &.quote-content__quote--left-align,
+      &.quote-content__quote--right-align {
+        width: 503px;
+      }
+
+      &.quote-content__quote--left-align {
+        align-items: flex-start;
+        margin-right: 503px;
+        text-align: left;
+      }
+
+      &.quote-content__quote--right-align {
+        align-items: flex-end;
+        align-self: flex-end;
+        margin-right: 15%;
+        text-align: right;
+      }
+    }
+
+    @media @mediumScreen {
+      &.quote-content__quote--right-align {
+        margin-right: 10%;
+      }
+    }
+  }
+
+  .quote-content__attribution {
+    color: @lightBrown;
+    font-family: @festivo;
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    @media @smallScreen, @phone {
+      font-size: 1.5rem;
+    }
+  }
+}

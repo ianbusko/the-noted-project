@@ -1,0 +1,50 @@
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-media-queries';
+
+.video-player {
+  @media @largeScreen {
+    background-color: black;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+    z-index: 5;
+
+    &.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  @media @smallScreen, @phone {
+    z-index: 5;
+  }
+
+  .video-player__frame {
+    @media @largeScreen {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .close-icon {
+    position: absolute;
+    right: 3rem;
+    top: 3rem;
+
+    @media @mediumScreen {
+      right: 0.5rem;
+      top: 0.5rem;
+    }
+
+    @media @smallScreen, @phone {
+      display: none;
+    }
+  }
+}

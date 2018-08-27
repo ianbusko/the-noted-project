@@ -1,0 +1,114 @@
+@import (reference) 'tnp-fonts';
+@import (reference) 'tnp-media-queries';
+@import (reference) 'tnp-colors';
+@lightestBrown: #d8c8b2;
+@lightBrown: #a89a86;
+@articleBorder: 1px solid @lightBrown;
+
+.article-text {
+  background-color: @cream;
+  background-image: url(../images/tile.gif);
+  align-content: center;
+  color: @darkBrown;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  justify-content: center;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 3rem 2.5rem 2.5rem;
+  text-align: center;
+
+  @media @mediumScreen {
+    max-width: 875px;
+    padding: 2rem 2.5rem 1.5rem;
+  }
+
+  .article-text-header {
+    border-bottom: @articleBorder;
+    text-align: center;
+
+    .header-image {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      display: block;
+      padding-top: 25%;
+
+      // @media @smallLaptop{
+      @media @mediumScreen {
+        padding-top: 15%;
+      }
+    }
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .article-title {
+    color: @darkBrown;
+    font-family: @minimoRegular;
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    text-transform: capitalize;
+  }
+
+  .article-text-content {
+    color: @darkBrown;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    line-height: 1.6em;
+    padding: 4rem 3.5rem 4rem;
+
+    @media @mediumScreen {
+      padding: 2rem 1.5rem;
+    }
+
+    a {
+      border-bottom: 2px solid @lightestBrown;
+      box-shadow: inset 0 -4px 0 @lightestBrown;
+      color: @darkBrown;
+      font-weight: bold;
+      transition: background 0.2s ease-in;
+      white-space: nowrap;
+
+      &:hover {
+        background: @lightestBrown;
+      }
+    }
+
+    p {
+      font-family: @average;
+    }
+  }
+
+  .article-text-footer {
+    border-top: @articleBorder;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    padding-top: 1em;
+    p {
+      color: @lightBrown;
+      font-family: @minimoBold;
+    }
+  }
+
+  @media @smallScreen, @phone {
+    max-width: 100%;
+  }
+
+  @media @phone {
+    padding: 2.5rem 0 0;
+
+    .article-text-content {
+      padding: 2rem;
+    }
+
+    .article-text-footer {
+      display: none;
+    }
+  }
+}

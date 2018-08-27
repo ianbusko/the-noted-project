@@ -1,0 +1,46 @@
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-media-queries';
+@import (reference) 'tnp-fonts';
+
+.share-slide-content {
+  .share-slide-content__text {
+    color: @cream;
+    font-size: 3.5rem;
+    font-family: @minimoRegular;
+    line-height: 1em;
+    margin-bottom: 2rem;
+    max-width: 680px;
+    text-align: center;
+
+    @media @smallScreen, @phone {
+      font-size: 2rem;
+    }
+  }
+
+  .share-slide-content__share-row {
+    display: flex;
+    justify-content: center;
+
+    @media @largeScreen {
+      flex-direction: row;
+
+      :first-child {
+        margin-right: 2rem;
+      }
+    }
+
+    @media @phone, @smallScreen {
+      flex-direction: column;
+      align-items: center;
+
+      :first-child {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  .share-links {
+    position: relative;
+    width: 211px;
+  }
+}

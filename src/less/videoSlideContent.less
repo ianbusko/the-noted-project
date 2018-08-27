@@ -1,0 +1,37 @@
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-media-queries';
+@import (reference) 'tnp-fonts';
+
+.video-label {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  @media @largeScreen {
+    & > :not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media @smallScreen, @phone {
+    margin-bottom: 1em;
+  }
+
+  .video-label__text {
+    color: @cream;
+    font-family: @minimoRegular;
+    font-size: 3.5rem;
+    line-height: 1em;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media @largeScreen {
+      /* Force line breaks - longest word is 5 letters and it's 3.5 * 5 width */
+      max-width: 15rem;
+    }
+
+    @media @smallScreen, @phone {
+      font-size: 2rem;
+    }
+  }
+}

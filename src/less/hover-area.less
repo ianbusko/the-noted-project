@@ -1,0 +1,188 @@
+﻿@import (reference) 'tnp-media-queries';
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-fonts';
+
+@hoverIconWidth: (@shareLinkHeight * 1.5);
+@hoverAreaOffsetX: 4rem;
+@hoverAreaOffsetY: 4rem;
+
+@hoverAreaSmallOffsetX: 2rem;
+@hoverAreaSmallOffsetY: 2rem;
+
+@hoverAreaMargin: 0.5rem;
+@hoverAreaLineHeight: 1rem;
+
+@pulseSize: (1.25 * @hoverIconWidth);
+
+/* HOVER CONTROLS */
+/* POSITION */
+.hover-area {
+  position: fixed;
+  bottom: @hoverAreaOffsetY;
+  left: @hoverAreaOffsetX;
+
+  @media @mediumScreen {
+    bottom: @hoverAreaSmallOffsetY;
+    left: @hoverAreaSmallOffsetX;
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* PRESENTATION */
+.hover-area {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.2s ease-in;
+  z-index: 5;
+
+  &:after {
+    content: 'View Photo';
+    color: @cream;
+    font-family: @festivo;
+    line-height: @hoverAreaLineHeight;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .hover-icon {
+    background-size: (@shareLinkHeight * 0.6);
+    height: @hoverIconWidth;
+    margin-bottom: @hoverAreaMargin;
+    width: @hoverIconWidth;
+
+    @media @mediumScreen {
+      height: (@hoverIconWidth * 0.75);
+      width: (@hoverIconWidth * 0.75);
+    }
+  }
+}
+
+/* HOVER ICON ANIMATION */
+.hover-icon {
+  position: relative;
+
+  &:after {
+    animation: pulse 3s infinite;
+    background: fade(@cream, 40%);
+    border-radius: 50%;
+    content: '';
+    height: @pulseSize;
+    margin: -(@pulseSize * 0.5) 0 0 - (@pulseSize * 0.5);
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: @pulseSize;
+    z-index: -1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale3d(0.3, 0.3, 1);
+  }
+  12.5%,
+  25% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale3d(1.2, 1.2, 1);
+  }
+}
+
+/* HOVER AREA */
+/* BEHAVIOR */
+
+.hover-area:hover {
+  & ~ .slide:after {
+    opacity: 0.6;
+  }
+
+  .hover-icon:after {
+    display: none;
+  }
+
+  &:after {
+    opacity: 0;
+  }
+
+  & ~ .slide > *:not(.slide-background),
+  & ~ .scroll-helper,
+  & ~ .nav-dots {
+    opacity: 0;
+  }
+
+  & ~ .slide > .cover {
+    transition-delay: 150ms;
+  }
+}
+
+/* HOVER AREA TRANSITIONS  */
+.slide {
+  & > *,
+  .cover {
+    transition: opacity 0.3s ease-out;
+  }
+}
+
+.hover-area .hover-label {
+  transition: opacity 0.3s ease-out;
+}
+
+.nav-dots {
+  transition: all 0.3s ease-in;
+}
+
+/* SLIDE HOVER TEXT */
+.hover-text {
+  align-items: center;
+  background: fade(@black, 30%);
+  border-radius: 0.25em;
+  box-shadow: 0 0 11px 7px fade(@black, 30%);
+  color: @cream;
+  display: flex;
+  font-family: @minimo;
+  font-size: 1em;
+  min-height: @hoverIconWidth;
+  margin-left: 1em;
+  max-width: 23em;
+  padding: 0.25em 0.75em;
+  position: absolute;
+  bottom: calc(
+    ~'@{hoverAreaMargin} + @{hoverAreaOffsetY} + @{hoverAreaLineHeight}'
+  );
+  left: calc(~'@{hoverAreaOffsetX} + @{hoverIconWidth}');
+  text-shadow: 1px 1px 3px @black;
+  will-change: opacity, transform;
+
+  @media @mediumScreen {
+    bottom: calc(
+      ~'@{hoverAreaMargin} + @{hoverAreaSmallOffsetY} + @{hoverAreaLineHeight}'
+    );
+    left: calc(~'@{hoverAreaSmallOffsetX} + @{hoverIconWidth}');
+    min-height: (@hoverIconWidth * 0.75);
+    margin-left: 0.5em;
+  }
+
+  @media @phone, @smallScreen {
+    display: none;
+  }
+}
+
+/* HOVER TEXT ANIMATION */
+.hover-text {
+  transition: all 0.3s ease-out;
+  opacity: 0;
+}
+
+.hover-area:hover ~ .slide .hover-text {
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.21, 0.01, 0.85, -0.17);
+}
