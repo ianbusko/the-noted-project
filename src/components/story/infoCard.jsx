@@ -9,7 +9,10 @@ const InfoCard = ({
   headerImageUrl, cardTitle, cardContent, isActive, onCloseClick,
 }) => (
   <article className={`info-card ${isActive ? 'active' : ''}`}>
-    <CloseArea onCloseClick={onCloseClick} />
+    <CloseArea
+      isCard
+      onCloseClick={onCloseClick}
+    />
     <CardHeader imageUrl={headerImageUrl} title={cardTitle} />
 
     {/* eslint-disable-next-line */}
@@ -42,7 +45,7 @@ export const infoCardFragment = graphql`
     title
     text{
       childMarkdownRemark{
-        htmlAst
+        html
       }
     }
   }

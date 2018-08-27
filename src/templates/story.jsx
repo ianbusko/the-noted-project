@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Layout from '../layouts/index';
-import Slide from '../components/story/slide';
 import withMetaData from '../layouts/withMetadata';
+import Slide from '../components/story/slide';
+import HoverArea from '../components/story/hoverArea';
+import SlideContentTypes from '../slideContentTypes';
+import InfoCard from '../components/story/infoCard';
 
 const LayoutWithMetaData = withMetaData(Layout);
 
@@ -12,7 +15,6 @@ class StoryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // eslint-disable-next-line
       activeCard: '',
     };
 
@@ -22,20 +24,25 @@ class StoryPage extends React.Component {
 
   onCardSelected(slug) {
     this.setState({
-      // eslint-disable-next-line
       activeCard: slug,
     });
+    // This is a hack. Please fix it later
+    // eslint-disable-next-line
+    document.querySelector('body').style.overflow = 'hidden';
   }
 
   onCardClosed() {
     this.setState({
-      // eslint-disable-next-line
       activeCard: '',
     });
+
+    // eslint-disable-next-line
+    document.querySelector('body').style.overflow = '';
   }
 
   render() {
     const { data } = this.props;
+    const { activeCard } = this.state;
     const story = get(data, 'contentfulStory');
     const slides = story.slides.map(slide => (
       <Slide
@@ -46,9 +53,32 @@ class StoryPage extends React.Component {
         key={slide.id}
       />
     ));
+
+    const infoCards = story.slides
+      .filter(
+        // eslint-disable-next-line
+        slide => slide.slideContent[0].__typename === SlideContentTypes.TextContent
+          && slide.slideContent[0].infoCards,
+      )
+      .reduce((arr, slide) => arr.concat(slide.slideContent[0].infoCards), [])
+      .map(card => (
+        <InfoCard
+          headerImageUrl={card.headerImage.file.url}
+          cardTitle={card.title}
+          cardContent={card.text.childMarkdownRemark.html}
+          isActive={card.slug === activeCard}
+          onCloseClick={this.onCardClosed}
+        />
+      ));
+
+    const isCardActive = activeCard !== '';
     return (
-      <LayoutWithMetaData isStory>
-        <div>Welcome to the story!</div>
+      <LayoutWithMetaData
+        isStory
+        infoCards={infoCards}
+        isCardActive={isCardActive}
+      >
+        <HoverArea />
         {slides}
       </LayoutWithMetaData>
     );

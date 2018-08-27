@@ -1,4 +1,6 @@
-@import (reference) 'tnp-constants';
+@import (reference) 'tnp-media-queries';
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-fonts';
 
 .card-content {
   background-color: @darkBrown;
@@ -10,31 +12,23 @@
     margin: 0 auto;
   }
 
-  & > *:not(:last-child) {
+  & > p:not(:last-child),
+  & > ul:not(:last-child){
     margin-bottom: 2rem;
-  }
-
-  .subtitle {
-    &:after {
-      content: '';
-      display: block;
-    }
   }
 }
 
 /* DISPLAY */
 .card-content {
-  h2 {
-    color: @lightBrown;
-    font-family: @minimoBold;
-    font-size: 1em;
-    text-transform: uppercase;
-  }
-
   p {
     color: @cream;
+    font-family: @average;
     line-height: 1.5em;
     text-align: left;
+    
+    img{
+      width: 100%;
+    }
   }
 
   a {
@@ -42,35 +36,20 @@
     text-decoration: none;
   }
 
-  .subtitle {
-    color: @lightBrown;
-    font-family: @minimoBold;
+  h2 {
+    color: @cream;
+    font-family: @minimo;
     font-size: 1em;
-    position: relative;
+    letter-spacing: 1px;
+    margin-bottom: 0.5em;
+    text-align: left;
     text-transform: uppercase;
-
-    &:after {
-      border-bottom: 1px solid @lightBrown;
-      padding-top: 0.25em;
-    }
   }
 
-  .link-list {
-    h3 {
-      color: @cream;
-      font-family: @minimo;
-      font-size: 1em;
-      letter-spacing: 1px;
-      margin-bottom: 0.5em;
-      text-align: left;
-      text-transform: uppercase;
-    }
-  }
-
-  .card-links {
+  ul {
     text-align: left;
 
-    .card-link {
+    li {
       color: @cream;
       line-height: 1.5em;
       list-style: disc;
@@ -80,20 +59,31 @@
     }
   }
 
-  .card-source {
-    font-size: 0.75em;
+  hr{
+    margin-bottom: 2em;
 
-    &:not(:last-child) {
-      margin-bottom: 1em;
+    & ~ p{
+      font-size: 0.85em;
+    }
+  }
+
+  // FROM contentful
+  .footnote-ref{
+    &:before{
+      content: '[';
+    }
+
+    &:after{
+      content: ']';
     }
   }
 }
 
-.info-card {
-  &.active {
-    transform: none;
-  }
-}
+// .info-card {
+//   &.active {
+//     transform: none;
+//   }
+// }
 
 .close-area {
   position: absolute;

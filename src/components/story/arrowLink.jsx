@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../../less/arrowLink.less';
 
 const ArrowLink = ({ direction, linkText, linkUrl }) => (
-  <div className={`arrow-column grid ${direction}`}>
-    <a href={linkUrl} className="arrow-link">
+  <div className="arrow-link">
+    <a href={linkUrl} className={`arrow-link__link ${direction}`}>
       <span>{linkText}</span>
+      <div className={`arrow ${direction}`} />
     </a>
   </div>
 );

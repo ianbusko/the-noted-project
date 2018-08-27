@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import ArrowLink from '../arrowLink';
 import logoIcon from '../../../images/logo-icon.svg';
+import '../../../less/introSlideContent.less';
 
 const IntroSlideContent = ({ title, previousStoryLink, nextStoryLink }) => (
-  <div className="three-columns grid">
+  <div className="intro-slide">
 
     <ArrowLink
       direction="left"
@@ -13,19 +14,14 @@ const IntroSlideContent = ({ title, previousStoryLink, nextStoryLink }) => (
       linkUrl={previousStoryLink}
     />
 
-    <div className="center-column grid">
-      <div className="row no-mobile">
-        <div className="logo">
-          <img
-            src={logoIcon}
-            height="101px"
-            alt="The Noted Project"
-          />
-        </div>
-      </div>
-      <div className="row">
-        <h1>{ title }</h1>
-      </div>
+    <div className="intro-slide__main">
+      <img
+        className="intro-slide__logo"
+        src={logoIcon}
+        height="101px"
+        alt="The Noted Project"
+      />
+      <h1 className="intro-slide__title">{ title }</h1>
     </div>
 
     <ArrowLink

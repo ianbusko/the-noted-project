@@ -2,17 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import SlideContentChild from './slideContentChild';
-import '../../less/hover-area.less';
+import SlideContentTypes from '../../slideContentTypes';
 import '../../less/slide.less';
 import '../../less/slideBackgroundCover.less';
-import '../../less/videoSlide.less';
+
+const getSlideClasses = (slideContentType) => {
+  switch (slideContentType) {
+    case SlideContentTypes.IntroContent:
+      return 'hero show-helper-text no-hover';
+    case SlideContentTypes.VideoContent:
+      return 'video-slide';
+    case SlideContentTypes.TextContent:
+      return 'responsive-slide';
+    case SlideContentTypes.ShareContent:
+      return 'share-slide';
+    default:
+      return '';
+  }
+};
 
 const Slide = ({
   backgroundImageUrl,
   hoverText,
   slideContent,
+  onCardSelected,
 }) => (
-  <section className="slide">
+  // eslint-disable-next-line
+  <section className={`slide ${getSlideClasses(slideContent.__typename)}`}>
     <div
       className="slide-background"
       style={{
@@ -22,11 +38,14 @@ const Slide = ({
 
     <div className="slide-background-cover" />
 
-    <div className="hover-text">
-      { hoverText }
-    </div>
+    { hoverText && (
+      <div className="hover-text">
+        { hoverText }
+      </div>
+    )}
     <SlideContentChild
       slideContent={slideContent}
+      onCardSelected={onCardSelected}
     />
   </section>
 );
@@ -36,7 +55,6 @@ Slide.propTypes = {
   slideContent: PropTypes.object.isRequired,
   backgroundImageUrl: PropTypes.string.isRequired,
   hoverText: PropTypes.string,
-  // eslint-disable-next-line
   onCardSelected: PropTypes.func.isRequired,
 };
 

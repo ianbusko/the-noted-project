@@ -1,0 +1,54 @@
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-fonts';
+
+.arrow-link{
+  transition: transform 0.3s ease-in;
+  
+  &:hover{
+    transform: scale(1.1);
+  }
+
+  span{
+    color:@cream;
+    display: block;
+    flex:1;
+    font-family:@festivo;
+    width:40px;
+  }
+
+  .arrow-link__link{
+    align-items:center;
+    display:flex;
+
+    &.left{
+      flex-direction: row-reverse;
+      span{
+        margin-left:.25em;
+      }
+    }
+
+    &.right{
+      span{
+        margin-right:.25em;
+      }
+    }
+  }
+}
+
+/* ARROWS */
+.arrow {
+  border: solid @cream;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  height:2rem;
+  width:2rem;
+  padding: 3px;
+
+  &.left{
+    transform: rotate(135deg);
+  }
+
+  &.right{
+    transform: rotate(-45deg);
+  }
+}

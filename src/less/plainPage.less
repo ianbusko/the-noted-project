@@ -1,48 +1,50 @@
 @import (reference) 'tnp-fonts';
 @import (reference) 'tnp-colors';
 
-body{
+body {
   background-color: @cream;
   // TODO: fix for webpack
   background-image: 'url(/images/tile.gif)';
 }
 
-article{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.plain-page {
+  article {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  header{
-    margin-bottom: 2rem;
+    header {
+      margin-bottom: 2rem;
+    }
+
+    > *:not(a):not(hr) {
+      max-width: 55rem;
+      width: 100%;
+    }
   }
 
-  > *:not(a):not(hr) {
-    max-width: 55rem;
-    width:100%;
+  h1 {
+    font-family: @minimoRegular;
+    font-size: 2.5em;
+    font-weight: normal;
+    line-height: 1em;
+    margin-bottom: 1rem;
+    text-align: center;
   }
-}
 
-h1{
-  font-family: @minimoRegular;
-  font-size: 2.5em;
-  font-weight: normal;
-  line-height: 1em;
-  margin-bottom: 1rem;
-  text-align: center;
-}
+  hr {
+    background-color: @lightBrown;
+    border: transparent;
+    height: 2px;
+    margin: 0 auto;
+    width: 4rem;
+  }
 
-hr{
-  background-color: @lightBrown;
-  border: transparent;
-  height: 2px;
-  margin: 0 auto;
-  width: 4rem;
-}
-
-p{
-  font-family: @average;
-  font-size: 1.25em;
-  line-height: 1.45em;
-  margin-bottom: 1rem;
+  p {
+    font-family: @average;
+    font-size: 1.25em;
+    line-height: 1.45em;
+    margin-bottom: 1rem;
+  }
 }

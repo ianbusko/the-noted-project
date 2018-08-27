@@ -39,7 +39,11 @@ class VideoSlideContent extends React.Component {
           <VideoPlayIcon onPlayClick={this.playVideo} />
         </div>
 
-        <VideoPlayer videoUrl={videoUrl} onCloseClick={this.stopVideo} isActive={isPlaying} />
+        <VideoPlayer
+          videoUrl={videoUrl}
+          onCloseClick={this.stopVideo}
+          isActive={isPlaying}
+        />
       </div>
     );
   }
@@ -52,7 +56,7 @@ VideoSlideContent.propTypes = {
 export default VideoSlideContent;
 
 export const videoSlideContentFragment = graphql`
-  fragment videoSlideContentFragment on ContentfulSlideContentVideo{
+  fragment videoSlideContentFragment on ContentfulSlideContentVideo {
     vimeoUrl
   }
 `;

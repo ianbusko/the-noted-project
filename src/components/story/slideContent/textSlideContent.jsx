@@ -14,7 +14,15 @@ class TextSlideContent extends React.Component {
     this.renderAst = new rehypeReact({
       createElement: React.createElement,
       components: {
-        a: fields => (<a className="Hello-there" href={fields.href} onClick={this.onCardClicked.bind(props.href)}>{ props.children[0] }</a>),
+        a: fields => (
+          <a
+            className="Hello-there"
+            href={fields.href}
+            onClick={this.onCardClicked.bind(fields.href)}
+          >
+            {fields.children[0]}
+          </a>
+        ),
       },
     }).Compiler;
   }
@@ -30,44 +38,24 @@ class TextSlideContent extends React.Component {
     const { headerImageUrl, title, textAst } = this.props;
     return (
       <div className="article-text">
-
         <header className="article-text-header">
-          { headerImageUrl
-          && (
-          <div
-            className="header-image"
-            style={{
-              backgroundImage: `url(https:${headerImageUrl})`,
-            }}
-          />
-          )
-        }
+          {headerImageUrl && (
+            <div
+              className="header-image"
+              style={{
+                backgroundImage: `url(https:${headerImageUrl})`,
+              }}
+            />
+          )}
 
-          { !headerImageUrl
-            && title
-            && (
-              <h3 className="article-title">
-                {title}
-              </h3>
-            )
-          }
-
+          {!headerImageUrl
+            && title && <h3 className="article-title">{title}</h3>}
         </header>
 
         <div className="article-text-content">
-          { headerImageUrl
-            && (
-            <h3 className="article-title">
-              {title}
-            </h3>
-            )
-          }
+          {headerImageUrl && <h3 className="article-title">{title}</h3>}
 
-          <div>
-            {
-              this.renderAst(textAst)
-            }
-          </div>
+          <div>{this.renderAst(textAst)}</div>
         </div>
 
         {/* TODO: fix this mess */}
@@ -81,7 +69,8 @@ class TextSlideContent extends React.Component {
 
 TextSlideContent.propTypes = {
   onCardSelected: PropTypes.func.isRequired,
-  textAst: PropTypes.string.isRequired,
+  // eslint-disable-next-line
+  textAst: PropTypes.object.isRequired,
   headerImageUrl: PropTypes.string,
   title: PropTypes.string,
 };
@@ -101,12 +90,12 @@ export const textSlideContentFragment = graphql`
         url
       }
     }
-    text{
-      childMarkdownRemark{
+    text {
+      childMarkdownRemark {
         htmlAst
       }
     }
-    infoCards{
+    infoCards {
       ...infoCardFragment
     }
   }

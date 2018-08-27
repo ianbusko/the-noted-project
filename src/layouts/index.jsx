@@ -10,16 +10,21 @@ import '../less/overrides.less';
 import '../less/layout.less';
 import '../less/fonts.less';
 
-const backgroundStyles = {
-  backgroundColor: '#fef8f0',
-  backgroundImage: `url('${tile}')`,
-  position: 'relative',
-};
+function getStyles(isCardActive, isPlain) {
+  if (isPlain) {
+    return {
+      backgroundColor: '#fef8f0',
+      backgroundImage: `url('${tile}')`,
+      position: 'relative',
+    };
+  }
+  return {};
+}
 
 const Layout = ({
   children, isStory, isPlain, isSplash, isCardActive, infoCards, metaData,
 }) => (
-  <div style={(isPlain ? backgroundStyles : {})}>
+  <div style={getStyles(isCardActive, isPlain)}>
     <Helmet
       title={metaData.title}
       meta={[
@@ -29,7 +34,6 @@ const Layout = ({
     />
     <Navigation isStory={isStory} isPlain={isPlain} showLightMenu={isStory || isSplash} />
     <main>
-      {/* TODO: move this out of main */}
       { isStory && infoCards.length > 0
         && (
         <CardArea isActive={isCardActive}>

@@ -74,17 +74,25 @@
     overflow-y: auto;
   }
 
-  .info-card {
+  .info-card.active {
     transform: none;
+  }
+
+  .info-card:not(.active){
+    display: none;
   }
 }
 
 /* TRANSITIONS */
-.card--animatable .info-card {
+.card-area .info-card{
+  transition: transform 330ms ease-out;
+}
+
+.card--animatable .info-card.active {
   transition: transform 130ms ease-in;
 }
 
-.card--visible.card-area--loaded .info-card {
+.card--visible.card-area--loaded .info-card.active {
   transition: transform 330ms ease-out;
 }
 

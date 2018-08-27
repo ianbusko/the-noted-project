@@ -25,7 +25,7 @@ const PlainPageLayout = ({ children, metaData }) => (
       ]}
     />
     <Navigation isPlain />
-    <main>
+    <main className="plain-page">
       <Wrapper>
         {children}
       </Wrapper>

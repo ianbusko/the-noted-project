@@ -5,7 +5,7 @@ import CloseIcon from '../closeIcon';
 const CloseArea = ({ onCloseClick }) => (
   <div className="close-area">
     <CloseIcon
-      onClick={onCloseClick}
+      onCloseClick={onCloseClick}
       isCard
     />
   </div>

@@ -1,10 +1,9 @@
 const SlideContentTypes = {
-  IntroContent: 'ContentfulIntroSlideContent',
+  IntroContent: 'ContentfulSlideContentIntro',
   VideoContent: 'ContentfulSlideContentVideo',
-  TextContent: 'ContentfulTextSlideContent',
-  EndContent: 'ContentfulEndSlideContent',
-  QuoteContent: 'ContentfulQuoteSlideContent',
-  ShareContent: 'ContentfulShareSlideContent',
+  TextContent: 'ContentfulSlideContentText',
+  QuoteContent: 'ContentfulSlideContentQuote',
+  ShareContent: 'ContentfulSlideContentShare',
 };
 
 export default SlideContentTypes;
