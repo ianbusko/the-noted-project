@@ -77,6 +77,7 @@ class StoryPage extends React.Component {
         isStory
         infoCards={infoCards}
         isCardActive={isCardActive}
+        storyTitle={story.title}
       >
         <HoverArea />
         {slides}

@@ -22,12 +22,19 @@ function getStyles(isCardActive, isPlain) {
   return {};
 }
 
+function getTitle(isStory, metaDataTitle, storyTitle) {
+  if (isStory) {
+    return `${metaDataTitle} | ${storyTitle}`;
+  }
+  return metaDataTitle;
+}
+
 const Layout = ({
-  children, isStory, isPlain, isSplash, isCardActive, infoCards, metaData,
+  children, isStory, isPlain, isSplash, isCardActive, infoCards, metaData, storyTitle,
 }) => (
   <div style={getStyles(isCardActive, isPlain)}>
     <Helmet
-      title={metaData.title}
+      title={getTitle(isStory, metaData.title, storyTitle)}
       meta={[
         { name: 'description', content: 'Sample' },
         { name: 'keywords', content: 'sample, something' },
@@ -64,6 +71,7 @@ Layout.propTypes = {
   metaData: PropTypes.shape({
     title: PropTypes.string.isRequired,
   }).isRequired,
+  storyTitle: PropTypes.string,
 };
 
 Layout.defaultProps = {
@@ -72,6 +80,7 @@ Layout.defaultProps = {
   isSplash: false,
   isCardActive: false,
   infoCards: [],
+  storyTitle: '',
 };
 
 export default Layout;

@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import SlideContentTypes from '../../slideContentTypes';
-import IntroSlideContent from './slideContent/introSlideContent';
-import QuoteSlideContent from './slideContent/quoteSlideContent';
-import ShareSlideContent from './slideContent/shareSlideContent';
-import TextSlideContent from './slideContent/textSlideContent';
-import VideoSlideContent from './slideContent/videoSlideContent';
+import SlideContentTypes from '../../../slideContentTypes';
+import IntroSlideContent from './introSlideContent';
+import QuoteSlideContent from './quoteSlideContent';
+import ShareSlideContent from './shareSlideContent';
+import TextSlideContent from './textSlideContent';
+import VideoSlideContent from './videoSlideContent';
 
 function getSwitch(data, onCardSelected) {
   // eslint-disable-next-line
   switch (data.__typename) {
     case SlideContentTypes.IntroContent:
-      return <IntroSlideContent title="slide content" />;
+      return <IntroSlideContent title={data.title} />;
     case SlideContentTypes.QuoteContent:
       return (
         <QuoteSlideContent

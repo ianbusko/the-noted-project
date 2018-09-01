@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import SlideContentChild from './slideContentChild';
+import SlideContentChild from './slideContent/slideContentChild';
 import SlideContentTypes from '../../slideContentTypes';
 import '../../less/slide.less';
 import '../../less/slideBackgroundCover.less';
