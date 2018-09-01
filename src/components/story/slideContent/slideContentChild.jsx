@@ -8,7 +8,7 @@ import ShareSlideContent from './shareSlideContent';
 import TextSlideContent from './textSlideContent';
 import VideoSlideContent from './videoSlideContent';
 
-function getSwitch(data, onCardSelected) {
+function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyName) {
   // eslint-disable-next-line
   switch (data.__typename) {
     case SlideContentTypes.IntroContent:
@@ -32,6 +32,9 @@ function getSwitch(data, onCardSelected) {
           textAst={textAst}
           headerImageUrl={headerImageUrl}
           title={data.title}
+          textSlideIndex={textSlideIndex}
+          textSlideTotal={textSlideTotal}
+          storyName={storyName}
         />
       );
     }
@@ -42,14 +45,21 @@ function getSwitch(data, onCardSelected) {
   }
 }
 
-const SlideChildContent = ({ slideContent, onCardSelected }) => (
-  <React.Fragment>{getSwitch(slideContent, onCardSelected)}</React.Fragment>
+const SlideChildContent = ({
+  slideContent, onCardSelected, textSlideIndex, textSlideTotal, storyName,
+}) => (
+  <React.Fragment>
+    {getSwitch(slideContent, onCardSelected, textSlideIndex, textSlideTotal, storyName)}
+  </React.Fragment>
 );
 
 SlideChildContent.propTypes = {
   // eslint-disable-next-line
   slideContent: PropTypes.object.isRequired,
   onCardSelected: PropTypes.func.isRequired,
+  textSlideIndex: PropTypes.number.isRequired,
+  textSlideTotal: PropTypes.number.isRequired,
+  storyName: PropTypes.string.isRequired,
 };
 
 export default SlideChildContent;

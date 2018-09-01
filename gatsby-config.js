@@ -2,7 +2,7 @@ const Contentful = require('./.contentful.json');
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'The Noted Project',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

@@ -26,6 +26,9 @@ const Slide = ({
   hoverText,
   slideContent,
   onCardSelected,
+  textSlideIndex,
+  textSlideTotal,
+  storyName,
 }) => (
   // eslint-disable-next-line
   <section className={`slide ${getSlideClasses(slideContent.__typename)}`}>
@@ -46,6 +49,9 @@ const Slide = ({
     <SlideContentChild
       slideContent={slideContent}
       onCardSelected={onCardSelected}
+      textSlideIndex={textSlideIndex}
+      textSlideTotal={textSlideTotal}
+      storyName={storyName}
     />
   </section>
 );
@@ -56,6 +62,9 @@ Slide.propTypes = {
   backgroundImageUrl: PropTypes.string.isRequired,
   hoverText: PropTypes.string,
   onCardSelected: PropTypes.func.isRequired,
+  textSlideIndex: PropTypes.number.isRequired,
+  textSlideTotal: PropTypes.number.isRequired,
+  storyName: PropTypes.string.isRequired,
 };
 
 Slide.defaultProps = {

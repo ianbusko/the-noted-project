@@ -35,7 +35,9 @@ class TextSlideContent extends React.Component {
   }
 
   render() {
-    const { headerImageUrl, title, textAst } = this.props;
+    const {
+      headerImageUrl, title, textAst, textSlideIndex, textSlideTotal, storyName,
+    } = this.props;
     return (
       <div className="article-text">
         <header className="article-text-header">
@@ -60,7 +62,9 @@ class TextSlideContent extends React.Component {
 
         {/* TODO: fix this mess */}
         <footer className="article-text-footer">
-          <p>The Noted project | la june paw | part 1 of 4</p>
+          <p>
+            {`The Noted project | ${storyName} | part ${textSlideIndex} of ${textSlideTotal}`}
+          </p>
         </footer>
       </div>
     );
@@ -73,6 +77,9 @@ TextSlideContent.propTypes = {
   textAst: PropTypes.object.isRequired,
   headerImageUrl: PropTypes.string,
   title: PropTypes.string,
+  textSlideIndex: PropTypes.number.isRequired,
+  textSlideTotal: PropTypes.number.isRequired,
+  storyName: PropTypes.string.isRequired,
 };
 
 TextSlideContent.defaultProps = {
