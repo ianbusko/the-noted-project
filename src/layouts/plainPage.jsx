@@ -5,6 +5,7 @@ import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 import Wrapper from '../components/wrapper';
 import tile from '../images/tile.gif';
+import favicon from '../images/favicon/favicon-32.png';
 import '../less/overrides.less';
 import '../less/layout.less';
 import '../less/fonts.less';
@@ -22,6 +23,9 @@ const PlainPageLayout = ({ children, metaData }) => (
       meta={[
         { name: 'description', content: 'Sample' },
         { name: 'keywords', content: 'sample, something' },
+      ]}
+      link={[
+        { rel: 'shortcut icon', type: 'image/png', href: `${favicon}` },
       ]}
     />
     <Navigation isPlain />

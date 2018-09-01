@@ -6,6 +6,7 @@ import Footer from '../components/footer';
 import Wrapper from '../components/wrapper';
 import CardArea from '../components/cardArea';
 import tile from '../images/tile.gif';
+import favicon from '../images/favicon/favicon-32.png';
 import '../less/overrides.less';
 import '../less/layout.less';
 import '../less/fonts.less';
@@ -30,6 +31,9 @@ const Layout = ({
       meta={[
         { name: 'description', content: 'Sample' },
         { name: 'keywords', content: 'sample, something' },
+      ]}
+      link={[
+        { rel: 'shortcut icon', type: 'image/png', href: `${favicon}` },
       ]}
     />
     <Navigation isStory={isStory} isPlain={isPlain} showLightMenu={isStory || isSplash} />
