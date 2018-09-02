@@ -52,9 +52,12 @@ const Layout = ({
         </CardArea>
         )
       }
+      {isStory && children }
+      {!isStory && (
       <Wrapper isStory={isStory}>
         {children}
       </Wrapper>
+      )}
       {/* TODO: move footer below main */}
       <Footer isStory={isStory} />
     </main>

@@ -18,12 +18,15 @@ class VideoSlideContent extends React.Component {
   }
 
   playVideo() {
+    // TODO: find a more elegant solution to this.
+    document.querySelector('body').style.overflow = 'hidden';
     this.setState({
       isPlaying: true,
     });
   }
 
   stopVideo() {
+    document.querySelector('body').style.overflow = '';
     this.setState({
       isPlaying: false,
     });

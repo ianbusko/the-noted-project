@@ -29,9 +29,16 @@ const Slide = ({
   textSlideIndex,
   textSlideTotal,
   storyName,
+  isActive,
+  isTransitioning,
+  isLeaving,
 }) => (
   // eslint-disable-next-line
-  <section className={`slide ${getSlideClasses(slideContent.__typename)}`}>
+  <section className={`slide ${getSlideClasses(slideContent.__typename)}
+    ${isActive ? 'slide--active' : ''}
+    ${isTransitioning ? 'slide--transitioning' : ''}
+    ${isLeaving ? 'slide--leaving' : ''}`}
+  >
     <div
       className="slide-background"
       style={{
@@ -65,10 +72,16 @@ Slide.propTypes = {
   textSlideIndex: PropTypes.number.isRequired,
   textSlideTotal: PropTypes.number.isRequired,
   storyName: PropTypes.string.isRequired,
+  isActive: PropTypes.bool,
+  isLeaving: PropTypes.bool,
+  isTransitioning: PropTypes.bool,
 };
 
 Slide.defaultProps = {
   hoverText: '',
+  isActive: false,
+  isLeaving: false,
+  isTransitioning: false,
 };
 
 export default Slide;

@@ -4,13 +4,15 @@ import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Layout from '../layouts/index';
 import withMetaData from '../layouts/withMetadata';
-import Slide from '../components/story/slide';
+import SlideArea from '../components/story/slideArea';
 import HoverArea from '../components/story/hoverArea';
 import StoryMetaTags from '../components/story/storyMetaTags';
 import SlideContentTypes from '../slideContentTypes';
 import InfoCard from '../components/story/infoCard';
+import withScrolling from '../components/story/withScrolling';
 
 const LayoutWithMetaData = withMetaData(Layout);
+const SlideAreaWithScrolling = withScrolling(SlideArea);
 
 class StoryPage extends React.Component {
   constructor(props) {
@@ -49,39 +51,8 @@ class StoryPage extends React.Component {
     const shareImage = get(story, 'metaTagImage.file.url');
     const shareUrl = `/story/${story.slug}`;
 
-    // eslint-disable-next-line
-    // debugger;
-    const textSlideCount = story.slides.filter(
-      // eslint-disable-next-line
-      slide => slide.slideContent[0].__typename === SlideContentTypes.TextContent,
-    ).length;
-
-    let textSlideIndex = 0;
-    const getTextSlideIndex = (slideType) => {
-      if (slideType === SlideContentTypes.TextContent) {
-        textSlideIndex += 1;
-        return textSlideIndex;
-      }
-      return textSlideIndex;
-    };
-
-    const slides = story.slides.map(slide => (
-      <Slide
-        backgroundImageUrl={slide.backgroundImage.file.url}
-        hoverText={slide.photoCaption}
-        slideContent={slide.slideContent[0]}
-        onCardSelected={this.onCardSelected}
-        key={slide.id}
-        // eslint-disable-next-line
-        textSlideIndex={getTextSlideIndex(slide.slideContent[0].__typename)}
-        textSlideTotal={textSlideCount}
-        storyName={story.title}
-      />
-    ));
-
     const infoCards = story.slides
       .filter(
-        // eslint-disable-next-line
         slide => slide.slideContent[0].__typename === SlideContentTypes.TextContent
           && slide.slideContent[0].infoCards,
       )
@@ -110,8 +81,13 @@ class StoryPage extends React.Component {
           shareDescription={shareDescription}
           shareImageUrl={shareImage}
         />
+        <SlideAreaWithScrolling
+          maxIndex={story.slides.length}
+          slides={story.slides}
+          storyTitle={story.title}
+          onCardSelected={this.onCardSelected}
+        />
         <HoverArea />
-        {slides}
       </LayoutWithMetaData>
     );
   }
