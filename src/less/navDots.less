@@ -1,0 +1,56 @@
+@import (reference) 'tnp-media-queries';
+@import (reference) 'tnp-colors';
+
+.nav-dots {
+  display: flex;
+  height: 20rem;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 4rem;
+  z-index: 5;
+
+  ul {
+    display: flex;
+    flex-flow: column;
+    list-style: none;
+    justify-content: center;
+    padding: 0;
+
+    li {
+      position: relative;
+      display: block;
+      float: left;
+      margin: 0.5rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      cursor: pointer;
+
+      a {
+        box-shadow: 0 0 0 1px @cream;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border-radius: 50%;
+        cursor: pointer; /* make the text accessible to screen readers */
+        position: absolute;
+        transition: background-color 0.2s ease-out;
+      }
+
+      &.current a,
+      a:hover {
+        background-color: @cream;
+      }
+    }
+  }
+}
+
+@media @smallScreen, @phone {
+  .nav-dots {
+    display: none;
+  }
+}

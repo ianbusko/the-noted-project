@@ -107,7 +107,7 @@
 }
 
 .hover-area:hover {
-  & ~ .slide:after {
+  & ~ .wrapper .slide:after {
     opacity: 0.6;
   }
 
@@ -119,13 +119,13 @@
     opacity: 0;
   }
 
-  & ~ .slide > *:not(.slide-background),
+  & ~ .wrapper .slide > *:not(.slide-background),
   & ~ .scroll-helper,
   & ~ .nav-dots {
     opacity: 0;
   }
 
-  & ~ .slide > .slide-background-cover {
+  & ~ .wrapper .slide > .slide-background-cover {
     transition-delay: 150ms;
   }
 }

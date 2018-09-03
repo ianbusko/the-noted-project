@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Scrolling from '../../Scrolling';
 
 function withScrollSnapping(WrappedComponent) {
-  class ScrollArea extends Component {
+  class WithScrollSnapping extends Component {
     constructor(props) {
       super(props);
 
@@ -19,6 +19,7 @@ function withScrollSnapping(WrappedComponent) {
       this.scroller = new Scrolling();
 
       this.handleScroll = this.handleScroll.bind(this);
+      this.handleScrollTo = this.handleScrollTo.bind(this);
     }
 
     componentDidMount() {
@@ -42,7 +43,7 @@ function withScrollSnapping(WrappedComponent) {
 
     handleScroll(e) {
       const {
-        scrolling, activeIndex, windowHeight, disabled,
+        scrolling, activeIndex, disabled,
       } = this.state;
       if (disabled) { return true; }
       if (scrolling) {
@@ -53,23 +54,33 @@ function withScrollSnapping(WrappedComponent) {
       // 1 = down, -1 = up
       const direction = e.deltaY > 0 ? 1 : -1;
       const newIndex = this.getScrollIndex(direction);
-      const scrollPosition = newIndex * windowHeight;
 
       if (newIndex === activeIndex) {
         e.preventDefault();
         return false;
       }
 
+      this.scrollToIndex(newIndex);
+
+      return true;
+    }
+
+    handleScrollTo(index) {
+      this.scrollToIndex(index);
+    }
+
+    scrollToIndex(index) {
+      const { windowHeight } = this.state;
+      const scrollPosition = index * windowHeight;
+
       this.setState({
         scrolling: true,
-        upcomingIndex: newIndex,
+        upcomingIndex: index,
       });
       this.scroller.scrollTo(scrollPosition).then(() => {
         this.setState({ scrolling: false });
-        this.setState({ activeIndex: newIndex });
+        this.setState({ activeIndex: index });
       });
-
-      return true;
     }
 
     updateWindowHeight() {
@@ -85,6 +96,7 @@ function withScrollSnapping(WrappedComponent) {
       return (
         <WrappedComponent
           onScroll={this.handleScroll}
+          onScrollTo={this.handleScrollTo}
           activeIndex={activeIndex}
           isScrolling={scrolling}
           newIndex={upcomingIndex}
@@ -94,11 +106,11 @@ function withScrollSnapping(WrappedComponent) {
     }
   }
 
-  ScrollArea.propTypes = {
+  WithScrollSnapping.propTypes = {
     maxIndex: PropTypes.number.isRequired,
   };
 
-  return ScrollArea;
+  return WithScrollSnapping;
 }
 
 export default withScrollSnapping;

@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes, { shape } from 'prop-types';
 import Wrapper from '../wrapper';
 import HoverArea from './hoverArea';
+import NavDots from './navDots';
 import Slide from './slide';
 import SlideContentTypes from '../../slideContentTypes';
 
 const SlideArea = ({
-  slides, activeIndex, isScrolling, newIndex, storyTitle, onCardSelected, onScroll,
+  slides, activeIndex, isScrolling, newIndex, storyTitle, onCardSelected, onScroll, onScrollTo,
 }) => {
   let textSlideIndex = 0;
   const getTextSlideIndex = (slideType) => {
@@ -19,26 +20,34 @@ const SlideArea = ({
   const textSlideCount = slides.filter(
     slide => slide.slideContent[0].__typename === SlideContentTypes.TextContent,
   ).length;
+
   return (
-    <Wrapper isStory onScroll={onScroll}>
+    <React.Fragment>
       <HoverArea />
-      {slides.map((slide, index) => (
-        <Slide
-          backgroundImageUrl={slide.backgroundImage.file.url}
-          hoverText={slide.photoCaption}
-          slideContent={slide.slideContent[0]}
-          onCardSelected={onCardSelected}
-          key={slide.id}
-          // eslint-disable-next-line
-          textSlideIndex={getTextSlideIndex(slide.slideContent[0].__typename)}
-          textSlideTotal={textSlideCount}
-          storyName={storyTitle}
-          isActive={index === activeIndex}
-          isLeaving={index === activeIndex && isScrolling}
-          isTransitioning={index === newIndex && isScrolling}
-        />
-      ))}
-    </Wrapper>
+      <NavDots
+        targets={slides.map(slide => ({ id: slide.id }))}
+        activeDot={isScrolling ? newIndex : activeIndex}
+        onDotClicked={onScrollTo}
+      />
+      <Wrapper isStory onScroll={onScroll}>
+        {slides.map((slide, index) => (
+          <Slide
+            backgroundImageUrl={slide.backgroundImage.file.url}
+            hoverText={slide.photoCaption}
+            slideContent={slide.slideContent[0]}
+            onCardSelected={onCardSelected}
+            key={slide.id}
+            // eslint-disable-next-line
+            textSlideIndex={getTextSlideIndex(slide.slideContent[0].__typename)}
+            textSlideTotal={textSlideCount}
+            storyName={storyTitle}
+            isActive={index === activeIndex}
+            isLeaving={index === activeIndex && isScrolling}
+            isTransitioning={index === newIndex && isScrolling}
+          />
+        ))}
+      </Wrapper>
+    </React.Fragment>
   );
 };
 
@@ -51,6 +60,7 @@ SlideArea.propTypes = {
   storyTitle: PropTypes.string.isRequired,
   onCardSelected: PropTypes.func.isRequired,
   onScroll: PropTypes.func.isRequired,
+  onScrollTo: PropTypes.func.isRequired,
 };
 
 SlideArea.defaultProps = {

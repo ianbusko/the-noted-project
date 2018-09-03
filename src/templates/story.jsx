@@ -8,10 +8,10 @@ import SlideArea from '../components/story/slideArea';
 import StoryMetaTags from '../components/story/storyMetaTags';
 import SlideContentTypes from '../slideContentTypes';
 import InfoCard from '../components/story/infoCard';
-import withScrolling from '../components/story/withScrolling';
+import withScrollSnapping from '../components/story/withScrollSnapping';
 
 const LayoutWithMetaData = withMetaData(Layout);
-const SlideAreaWithScrolling = withScrolling(SlideArea);
+const SlideAreaWithScrolling = withScrollSnapping(SlideArea);
 
 class StoryPage extends React.Component {
   constructor(props) {
