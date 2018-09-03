@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes, { shape } from 'prop-types';
 import Wrapper from '../wrapper';
+import HoverArea from './hoverArea';
 import Slide from './slide';
 import SlideContentTypes from '../../slideContentTypes';
 
@@ -20,6 +21,7 @@ const SlideArea = ({
   ).length;
   return (
     <Wrapper isStory onScroll={onScroll}>
+      <HoverArea />
       {slides.map((slide, index) => (
         <Slide
           backgroundImageUrl={slide.backgroundImage.file.url}

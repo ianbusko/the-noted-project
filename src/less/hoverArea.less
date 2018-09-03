@@ -100,6 +100,11 @@
 
 /* HOVER AREA */
 /* BEHAVIOR */
+.slide > *:not(.slide-background),
+.scroll-helper,
+.nav-dots {
+  will-change: opacity;
+}
 
 .hover-area:hover {
   & ~ .slide:after {
@@ -120,7 +125,7 @@
     opacity: 0;
   }
 
-  & ~ .slide > .cover {
+  & ~ .slide > .slide-background-cover {
     transition-delay: 150ms;
   }
 }
@@ -128,7 +133,7 @@
 /* HOVER AREA TRANSITIONS  */
 .slide {
   & > *,
-  .cover {
+  .slide-background-cover {
     transition: opacity 0.3s ease-out;
   }
 }
@@ -181,6 +186,7 @@
 .hover-text {
   transition: all 0.3s ease-out;
   opacity: 0;
+  will-change: opacity;
 }
 
 .hover-area:hover ~ .slide .hover-text {

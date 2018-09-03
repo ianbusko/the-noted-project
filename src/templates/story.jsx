@@ -5,7 +5,6 @@ import get from 'lodash/get';
 import Layout from '../layouts/index';
 import withMetaData from '../layouts/withMetadata';
 import SlideArea from '../components/story/slideArea';
-import HoverArea from '../components/story/hoverArea';
 import StoryMetaTags from '../components/story/storyMetaTags';
 import SlideContentTypes from '../slideContentTypes';
 import InfoCard from '../components/story/infoCard';
@@ -87,7 +86,6 @@ class StoryPage extends React.Component {
           storyTitle={story.title}
           onCardSelected={this.onCardSelected}
         />
-        <HoverArea />
       </LayoutWithMetaData>
     );
   }
