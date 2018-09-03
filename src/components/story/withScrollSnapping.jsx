@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Scrolling from '../../Scrolling';
+import KeyCodes from '../../keys';
+
+const scrollDirections = {
+  [KeyCodes.DOWN_ARROW]: 1,
+  [KeyCodes.PAGE_DOWN]: 1,
+  [KeyCodes.UP_ARROW]: -1,
+  [KeyCodes.PAGE_UP]: -1,
+};
 
 function withScrollSnapping(WrappedComponent) {
   class WithScrollSnapping extends Component {
@@ -20,15 +28,18 @@ function withScrollSnapping(WrappedComponent) {
 
       this.handleScroll = this.handleScroll.bind(this);
       this.handleScrollTo = this.handleScrollTo.bind(this);
+      this.handleKeys = this.handleKeys.bind(this);
     }
 
     componentDidMount() {
       this.updateWindowHeight();
       window.addEventListener('resize', this.updateWindowHeight);
+      window.addEventListener('keydown', this.handleKeys);
     }
 
     componentWillUnmount() {
       window.removeEventListener('resize', this.updateWindowHeight);
+      window.removeEventListener('keydown', this.handleKeys);
     }
 
     getScrollIndex(direction) {
@@ -55,14 +66,33 @@ function withScrollSnapping(WrappedComponent) {
       const direction = e.deltaY > 0 ? 1 : -1;
       const newIndex = this.getScrollIndex(direction);
 
-      if (newIndex === activeIndex) {
+      if (newIndex !== activeIndex) {
+        this.scrollToIndex(newIndex);
+      }
+
+      e.preventDefault();
+      return false;
+    }
+
+    handleKeys(e) {
+      const {
+        disabled, scrolling, activeIndex,
+      } = this.state;
+
+      if (disabled) return true;
+      if (!scrollDirections[e.which]) return true;
+      if (scrolling) {
         e.preventDefault();
         return false;
       }
 
-      this.scrollToIndex(newIndex);
+      const newIndex = this.getScrollIndex(scrollDirections[e.which]);
+      if (newIndex !== activeIndex) {
+        this.scrollToIndex(newIndex);
+      }
 
-      return true;
+      e.preventDefault();
+      return false;
     }
 
     handleScrollTo(index) {
@@ -97,6 +127,7 @@ function withScrollSnapping(WrappedComponent) {
         <WrappedComponent
           onScroll={this.handleScroll}
           onScrollTo={this.handleScrollTo}
+          onKeyInput={this.handleKeys}
           activeIndex={activeIndex}
           isScrolling={scrolling}
           newIndex={upcomingIndex}

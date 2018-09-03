@@ -63,6 +63,7 @@ class StoryPage extends React.Component {
           cardContent={card.text.childMarkdownRemark.html}
           isActive={card.slug === activeCard}
           onCloseClick={this.onCardClosed}
+          key={card.slug}
         />
       ));
 

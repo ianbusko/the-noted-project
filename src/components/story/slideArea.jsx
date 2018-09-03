@@ -7,7 +7,14 @@ import Slide from './slide';
 import SlideContentTypes from '../../slideContentTypes';
 
 const SlideArea = ({
-  slides, activeIndex, isScrolling, newIndex, storyTitle, onCardSelected, onScroll, onScrollTo,
+  slides,
+  activeIndex,
+  isScrolling,
+  newIndex,
+  storyTitle,
+  onCardSelected,
+  onScroll,
+  onScrollTo,
 }) => {
   let textSlideIndex = 0;
   const getTextSlideIndex = (slideType) => {
@@ -29,7 +36,10 @@ const SlideArea = ({
         activeDot={isScrolling ? newIndex : activeIndex}
         onDotClicked={onScrollTo}
       />
-      <Wrapper isStory onScroll={onScroll}>
+      <Wrapper
+        isStory
+        onScroll={onScroll}
+      >
         {slides.map((slide, index) => (
           <Slide
             backgroundImageUrl={slide.backgroundImage.file.url}
