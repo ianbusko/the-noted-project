@@ -1,5 +1,30 @@
-// .slide{
-//   &:not(.slide--active):not(.slide--leaving){
-//     display: hidden;
-//   }
-// }
+.slide {
+  .slide-background {
+    will-change: opacity;
+  }
+  
+  &.slide--leaving {
+    .slide-background {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transition: opacity 0.5s ease-in;
+      opacity: 0;
+      width: auto;
+      z-index: 2;
+    }
+  }
+
+  &.slide--transitioning {
+    .slide-background {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
+  }
+}

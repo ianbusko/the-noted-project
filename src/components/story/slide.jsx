@@ -5,6 +5,7 @@ import SlideContentChild from './slideContent/slideContentChild';
 import SlideContentTypes from '../../slideContentTypes';
 import '../../less/slide.less';
 import '../../less/slideBackgroundCover.less';
+import '../../less/slideAnimations.less';
 
 const getSlideClasses = (slideContentType) => {
   switch (slideContentType) {
