@@ -10,6 +10,8 @@ const scrollDirections = {
   [KeyCodes.PAGE_UP]: -1,
 };
 
+const mobileWidth = 1024;
+
 function withScrollSnapping(WrappedComponent) {
   class WithScrollSnapping extends Component {
     constructor(props) {
@@ -21,25 +23,30 @@ function withScrollSnapping(WrappedComponent) {
         scrolling: false,
         windowHeight: 0,
         disabled: false,
+        isMobile: window.innerWidth <= mobileWidth,
       };
-      this.mobileWidth = 1025;
-      this.updateWindowHeight = this.updateWindowHeight.bind(this);
-      this.scroller = new Scrolling();
 
+      this.scroller = new Scrolling();
+      this.handleWindowResize = this.handleWindowResize.bind(this);
       this.handleScroll = this.handleScroll.bind(this);
       this.handleScrollTo = this.handleScrollTo.bind(this);
       this.handleKeys = this.handleKeys.bind(this);
     }
 
     componentDidMount() {
-      this.updateWindowHeight();
-      window.addEventListener('resize', this.updateWindowHeight);
+      this.handleWindowResize();
+      window.addEventListener('resize', this.handleWindowResize);
       window.addEventListener('keydown', this.handleKeys);
     }
 
     componentWillUnmount() {
-      window.removeEventListener('resize', this.updateWindowHeight);
+      window.removeEventListener('resize', this.handleWindowResize);
       window.removeEventListener('keydown', this.handleKeys);
+    }
+
+    setBodyOverflow() {
+      const { isMobile } = this.state;
+      document.querySelector('body').style.overflow = isMobile ? '' : 'hidden';
     }
 
     getScrollIndex(direction) {
@@ -99,6 +106,17 @@ function withScrollSnapping(WrappedComponent) {
       this.scrollToIndex(index);
     }
 
+    handleWindowResize() {
+      this.setState({ windowHeight: window.innerHeight });
+      this.setState({
+        disabled: window.innerWidth <= mobileWidth,
+      });
+      this.setState({
+        isMobile: window.innerWidth <= mobileWidth,
+      });
+      this.setBodyOverflow();
+    }
+
     scrollToIndex(index) {
       const { windowHeight } = this.state;
       const scrollPosition = index * windowHeight;
@@ -110,13 +128,6 @@ function withScrollSnapping(WrappedComponent) {
       this.scroller.scrollTo(scrollPosition).then(() => {
         this.setState({ scrolling: false });
         this.setState({ activeIndex: index });
-      });
-    }
-
-    updateWindowHeight() {
-      this.setState({ windowHeight: window.innerHeight });
-      this.setState({
-        disabled: window.innerWidth < this.mobileWidth,
       });
     }
 

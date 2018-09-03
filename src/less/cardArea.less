@@ -85,39 +85,15 @@
 
 /* TRANSITIONS */
 .card-area .info-card{
+  transform: translateX(calc(~'100% + 3rem'));
   transition: transform 330ms ease-out;
+  will-change: transform;
 }
 
-.card--animatable .info-card.active {
+.info-card.active {
   transition: transform 130ms ease-in;
 }
 
 .card--visible.card-area--loaded .info-card.active {
   transition: transform 330ms ease-out;
-}
-
-#loading-spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-  z-index: 1;
-
-  path {
-    fill: @cream;
-  }
-}
-
-.card-area {
-  #loading-spinner {
-    opacity: 0;
-  }
-
-  &.card--loading {
-    #loading-spinner {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.5);
-    }
-  }
 }

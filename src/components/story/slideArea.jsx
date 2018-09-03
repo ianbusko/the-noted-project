@@ -5,6 +5,7 @@ import HoverArea from './hoverArea';
 import NavDots from './navDots';
 import Slide from './slide';
 import SlideContentTypes from '../../slideContentTypes';
+import ScrollHelper from './scrollHelper';
 
 const SlideArea = ({
   slides,
@@ -56,7 +57,16 @@ const SlideArea = ({
             isTransitioning={index === newIndex && isScrolling}
           />
         ))}
+        <ScrollHelper
+          showRing={activeIndex === 0 && !isScrolling}
+          showViewText={activeIndex === 0 && !isScrolling}
+          showVideoText={
+            slides[activeIndex].slideContent[0].__typename === SlideContentTypes.VideoContent
+            && !isScrolling
+          }
+        />
       </Wrapper>
+
     </React.Fragment>
   );
 };

@@ -28,18 +28,12 @@ class StoryPage extends React.Component {
     this.setState({
       activeCard: slug,
     });
-    // This is a hack. Please fix it later
-    // eslint-disable-next-line
-    document.querySelector('body').style.overflow = 'hidden';
   }
 
   onCardClosed() {
     this.setState({
       activeCard: '',
     });
-
-    // eslint-disable-next-line
-    document.querySelector('body').style.overflow = '';
   }
 
   render() {
