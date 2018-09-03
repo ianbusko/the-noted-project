@@ -36,7 +36,7 @@ class TextSlideContent extends React.Component {
 
   render() {
     const {
-      headerImageUrl, title, textAst, textSlideIndex, textSlideTotal, storyName,
+      headerImageUrl, headerTitle, textAst, textSlideIndex, textSlideTotal, storyName,
     } = this.props;
     return (
       <div className="article-text">
@@ -51,11 +51,11 @@ class TextSlideContent extends React.Component {
           )}
 
           {!headerImageUrl
-            && title && <h3 className="article-title">{title}</h3>}
+            && headerTitle && <h3 className="article-title">{headerTitle}</h3>}
         </header>
 
         <div className="article-text-content">
-          {headerImageUrl && <h3 className="article-title">{title}</h3>}
+          {headerImageUrl && <h3 className="article-title">{headerTitle}</h3>}
 
           <div>{this.renderAst(textAst)}</div>
         </div>
@@ -76,7 +76,7 @@ TextSlideContent.propTypes = {
   // eslint-disable-next-line
   textAst: PropTypes.object.isRequired,
   headerImageUrl: PropTypes.string,
-  title: PropTypes.string,
+  headerTitle: PropTypes.string,
   textSlideIndex: PropTypes.number.isRequired,
   textSlideTotal: PropTypes.number.isRequired,
   storyName: PropTypes.string.isRequired,
@@ -84,14 +84,14 @@ TextSlideContent.propTypes = {
 
 TextSlideContent.defaultProps = {
   headerImageUrl: '',
-  title: '',
+  headerTitle: '',
 };
 
 export default TextSlideContent;
 
 export const textSlideContentFragment = graphql`
   fragment textSlideContentFragment on ContentfulSlideContentText {
-    title
+    headerTitle
     headerImage {
       file {
         url

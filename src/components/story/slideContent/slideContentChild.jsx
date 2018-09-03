@@ -31,7 +31,7 @@ function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyNa
           onCardSelected={onCardSelected}
           textAst={textAst}
           headerImageUrl={headerImageUrl}
-          title={data.title}
+          headerTitle={data.headerTitle}
           textSlideIndex={textSlideIndex}
           textSlideTotal={textSlideTotal}
           storyName={storyName}
