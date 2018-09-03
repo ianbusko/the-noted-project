@@ -2,12 +2,12 @@
 @tablet: 1024px;
 @computer: (@tablet + 1);
 
-@smallLaptop:~"only screen and (min-width:@{computer}) and (max-width:1200px)";
-@mediumScreen:~"only screen and (min-width: @{computer}) and (max-width:1440px)";
-@largeScreen:~"only screen and (min-width:@{computer})";
+@smallLaptop: ~'only screen and (min-width:@{computer}) and (max-width:1200px)';
+@mediumScreen: ~'only screen and (min-width: @{computer}) and (max-width:1440px)';
+@largeScreen: ~'only screen and (min-width:@{computer})';
 
-@phone:~"only screen and (min-width:0px) and (max-width:767px)";
-@smallScreen:~"only screen and (min-width:768px) and (max-width:@{tablet})";
+@phone: ~'only screen and (min-width:0px) and (max-width:767px)';
+@smallScreen: ~'only screen and (min-width:768px) and (max-width:@{tablet})';
 
 @navHeight: 84px;
 @shareLinkHeight: 50px;
