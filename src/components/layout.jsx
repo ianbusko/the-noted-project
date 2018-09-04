@@ -37,8 +37,11 @@ const Layout = ({
     <Helmet
       title={getTitle(isStory, metaData.title, storyTitle)}
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        { name: 'og:url', content: 'Sample' },
+        { name: 'og:type', content: 'website' },
+        { name: 'og:title', content: metaData.title },
+        { name: 'og:image', content: 'sample, something' },
+        { name: 'og:description', content: 'sample, something' },
       ]}
       link={[
         { rel: 'shortcut icon', type: 'image/png', href: `${favicon}` },
@@ -56,9 +59,9 @@ const Layout = ({
       }
       {isStory && children }
       {!isStory && (
-      <Wrapper isStory={isStory}>
-        {children}
-      </Wrapper>
+        <Wrapper>
+          {children}
+        </Wrapper>
       )}
       <Footer isStory={isStory} />
     </main>
