@@ -1,7 +1,13 @@
 # The Noted Project
 
 ## Contentful
-Add a contentful key.
+Create a contentful config called `.contentful.json` with the structure:
+```
+{
+  "spaceId": "",
+  "accessToken": ""
+}
+```
 
 ## Publish
 To be determined.
