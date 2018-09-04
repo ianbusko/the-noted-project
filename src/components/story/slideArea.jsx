@@ -48,7 +48,6 @@ const SlideArea = ({
             slideContent={slide.slideContent[0]}
             onCardSelected={onCardSelected}
             key={slide.id}
-            // eslint-disable-next-line
             textSlideIndex={getTextSlideIndex(slide.slideContent[0].__typename)}
             textSlideTotal={textSlideCount}
             storyName={storyTitle}

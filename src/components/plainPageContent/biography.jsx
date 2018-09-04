@@ -30,7 +30,6 @@ const Biography = ({
       <h3 className="biography__role">{role}</h3>
       <div
         className="biography__text"
-        // eslint-disable-next-line
         dangerouslySetInnerHTML={{ __html: bioTextHtml }}
       />
     </div>

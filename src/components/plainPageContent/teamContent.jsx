@@ -38,7 +38,6 @@ const TeamContent = ({ pageHeader, pageTextHtml, biographies }) => (
     <h1 className="team-content__header">{pageHeader}</h1>
     <div
       className="team-content__text"
-      // eslint-disable-next-line
       dangerouslySetInnerHTML={{ __html: pageTextHtml }}
     />
     <h1>Our Team</h1>

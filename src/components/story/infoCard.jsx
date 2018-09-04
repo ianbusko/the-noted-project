@@ -14,8 +14,6 @@ const InfoCard = ({
       onCloseClick={onCloseClick}
     />
     <CardHeader imageUrl={headerImageUrl} title={cardTitle} />
-
-    {/* eslint-disable-next-line */}
     <div className="card-content" dangerouslySetInnerHTML={{ __html: cardContent }} />
   </article>
 );

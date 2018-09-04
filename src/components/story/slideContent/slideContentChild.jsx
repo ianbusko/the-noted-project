@@ -9,7 +9,6 @@ import TextSlideContent from './textSlideContent';
 import VideoSlideContent from './videoSlideContent';
 
 function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyName) {
-  // eslint-disable-next-line
   switch (data.__typename) {
     case SlideContentTypes.IntroContent:
       return <IntroSlideContent title={data.title} />;

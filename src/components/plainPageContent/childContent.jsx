@@ -6,7 +6,6 @@ import ContactContent from './contactContent';
 import TeamContent from './teamContent';
 
 function getSwitch(data) {
-  // eslint-disable-next-line
   switch (data.__typename) {
     case PlainContentTypes.THANKS_CONTENT:
       return (

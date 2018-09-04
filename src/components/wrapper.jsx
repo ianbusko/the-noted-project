@@ -5,7 +5,6 @@ import '../less/wrapper.less';
 const Wrapper = ({
   children, isStory, onScroll,
 }) => (
-  // eslint-disable-next-line
   <section
     className={`wrapper ${isStory && 'story'}`}
     onWheel={onScroll}

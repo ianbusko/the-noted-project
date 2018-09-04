@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Button from '../button';
 
-// eslint-disable-next-line
-const ContactContent = ({emailAddress}) => (
+const ContactContent = ({ emailAddress }) => (
   <article style={{ flex: '1' }}>
     <header>
       <h1>Get in Touch</h1>

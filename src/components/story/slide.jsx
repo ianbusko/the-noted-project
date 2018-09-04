@@ -34,7 +34,6 @@ const Slide = ({
   isTransitioning,
   isLeaving,
 }) => (
-  // eslint-disable-next-line
   <section className={`slide ${getSlideClasses(slideContent.__typename)}
     ${isActive ? 'slide--active' : ''}
     ${isTransitioning ? 'slide--transitioning' : ''}

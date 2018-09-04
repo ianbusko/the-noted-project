@@ -44,12 +44,20 @@ class StoryPage extends React.Component {
     const shareImage = get(story, 'metaTagImage.file.url');
     const shareUrl = `/story/${story.slug}`;
 
+    const existingCards = {};
     const infoCards = story.slides
       .filter(
         slide => slide.slideContent[0].__typename === SlideContentTypes.TextContent
           && slide.slideContent[0].infoCards,
       )
       .reduce((arr, slide) => arr.concat(slide.slideContent[0].infoCards), [])
+      .reduce((arr, card) => {
+        if (!existingCards[card.slug]) {
+          existingCards[card.slug] = 1;
+          arr.push(card);
+        }
+        return arr;
+      }, [])
       .map(card => (
         <InfoCard
           headerImageUrl={card.headerImage.file.url}

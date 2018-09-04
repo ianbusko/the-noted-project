@@ -25,6 +25,7 @@ const SplashLinks = () => (
             <SplashStoryLink
               title={node.title}
               story={node.slug}
+              key={node.slug}
             />
           ))}
         </div>

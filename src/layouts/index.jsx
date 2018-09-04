@@ -58,7 +58,6 @@ const Layout = ({
         {children}
       </Wrapper>
       )}
-      {/* TODO: move footer below main */}
       <Footer isStory={isStory} />
     </main>
   </div>
