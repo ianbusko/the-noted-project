@@ -13,6 +13,7 @@ const shareLinks = [
 
 const ShareSlideContent = ({ storySlug }) => {
   // TODO: fix this to read location from metadata
+  // TODO: remove window from code
   const shareUrl = `${window.location.host}/story/${storySlug}`;
   return (
     <div className="share-slide-content">
