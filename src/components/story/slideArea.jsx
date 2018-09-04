@@ -56,15 +56,19 @@ const SlideArea = ({
             isTransitioning={index === newIndex && isScrolling}
           />
         ))}
-        <ScrollHelper
-          showRing={activeIndex === 0 && !isScrolling}
-          showViewText={activeIndex === 0 && !isScrolling}
-          showVideoText={
-            slides[activeIndex].slideContent[0].__typename === SlideContentTypes.VideoContent
-            && !isScrolling
-          }
-        />
       </Wrapper>
+      <ScrollHelper
+        showRing={activeIndex === 0 && !isScrolling}
+        showViewText={activeIndex === 0 && !isScrolling}
+        showVideoText={
+          slides[activeIndex].slideContent[0].__typename === SlideContentTypes.VideoContent
+          && !isScrolling
+        }
+        showArrow={
+          (!isScrolling && activeIndex !== (slides.length - 1))
+          || (isScrolling && newIndex !== (slides.length - 1))
+        }
+      />
 
     </React.Fragment>
   );
