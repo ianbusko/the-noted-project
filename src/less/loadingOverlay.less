@@ -1,0 +1,27 @@
+@import (reference) 'tnp-colors';
+
+.loading-overlay{
+  background-color: @cream;
+  height: 100%;
+  opacity: 1;
+  position: fixed;
+  pointer-events:none;
+  transition: opacity 0.4s ease-in;
+  width:100%;
+  z-index: 9999;
+
+  &.loading-overlay--loading{
+    opacity: 1;
+    pointer-events: all;
+    transition: all 0s ease-in;
+  }
+
+  &.loading-overlay--loaded{
+    opacity: 0;
+    pointer-events:none;
+  }
+}
+
+body:not(.loaded){
+  overflow: hidden;
+}
