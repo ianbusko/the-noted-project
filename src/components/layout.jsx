@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import Navigation from '../components/navigation';
-import Footer from '../components/footer';
-import Wrapper from '../components/wrapper';
-import CardArea from '../components/cardArea';
-import LoadingOverlay from '../components/loadingOverlay';
+import Navigation from './navigation';
+import Footer from './footer';
+import Wrapper from './wrapper';
+import CardArea from './cardArea';
+import LoadingOverlay from './loadingOverlay';
 import tile from '../images/tile.gif';
 import favicon from '../images/favicon/favicon-32.png';
 import '../less/overrides.less';
