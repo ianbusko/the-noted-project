@@ -12,7 +12,7 @@ import '../less/overrides.less';
 import '../less/layout.less';
 import '../less/fonts.less';
 
-function getStyles(isCardActive, isPlain) {
+function getStyles(isPlain) {
   if (isPlain) {
     return {
       backgroundColor: '#fef8f0',
@@ -31,9 +31,9 @@ function getTitle(isStory, metaDataTitle, pageTitle) {
 }
 
 const Layout = ({
-  children, isStory, isPlain, isSplash, isCardActive, infoCards, metaData, storyTitle,
+  children, isStory, isPlain, isCardActive, infoCards, metaData, storyTitle,
 }) => (
-  <div style={getStyles(isCardActive, isPlain)}>
+  <div style={getStyles(isPlain)}>
     <Helmet
       title={getTitle(isStory, metaData.title, storyTitle)}
       meta={[
@@ -47,7 +47,11 @@ const Layout = ({
         { rel: 'shortcut icon', type: 'image/png', href: `${favicon}` },
       ]}
     />
-    <Navigation isStory={isStory} isPlain={isPlain} showLightMenu={isStory || isSplash} />
+    <Navigation
+      isStory={isStory}
+      isPlain={isPlain}
+      showLightMenu={!isPlain}
+    />
     <LoadingOverlay />
     <main>
       { isStory && infoCards.length > 0
@@ -72,7 +76,6 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   isStory: PropTypes.bool,
   isPlain: PropTypes.bool,
-  isSplash: PropTypes.bool,
   isCardActive: PropTypes.bool,
   infoCards: PropTypes.arrayOf(PropTypes.object),
   metaData: PropTypes.shape({
@@ -84,7 +87,6 @@ Layout.propTypes = {
 Layout.defaultProps = {
   isStory: false,
   isPlain: false,
-  isSplash: false,
   isCardActive: false,
   infoCards: [],
   storyTitle: '',

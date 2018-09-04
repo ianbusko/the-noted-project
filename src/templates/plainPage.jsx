@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import PlainPageLayout from '../layouts/plainPage';
+import Layout from '../components/layout';
 import withMetadata from '../layouts/withMetadata';
 import PlainChildContent from '../components/plainPageContent/childContent';
 import '../less/plainPage.less';
 
-const PlainPageWithMetadata = withMetadata(PlainPageLayout);
+const LayoutWithMetaData = withMetadata(Layout);
 
 const PlainPage = ({ data }) => (
-  <PlainPageWithMetadata>
+  <LayoutWithMetaData>
     <PlainChildContent contentData={data.contentfulLayout.content[0]} />
-  </PlainPageWithMetadata>
+  </LayoutWithMetaData>
 );
 
 PlainPage.propTypes = {
