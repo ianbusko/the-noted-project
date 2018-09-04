@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../layouts/index';
+import Layout from '../components/layout';
 import withMetadata from '../layouts/withMetadata';
 import SplashBackground from '../components/splashBackground';
 import logo from '../images/logo-icon.svg';
