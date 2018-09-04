@@ -1,10 +1,16 @@
 import React from 'react';
+import Layout from '../layouts/index';
+import withMetaData from '../layouts/withMetadata';
+
+const LayoutWithMetaData = withMetaData(Layout);
 
 const NotFoundPage = () => (
-  <div>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that does exist...</p>
-  </div>
+  <LayoutWithMetaData isPlain>
+    <section>
+      {/* eslint-disable-next-line */}
+      Whoops! It looks like the page you searched for doesn't exist.
+    </section>
+  </LayoutWithMetaData>
 );
 
 export default NotFoundPage;
