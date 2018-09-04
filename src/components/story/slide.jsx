@@ -33,6 +33,7 @@ const Slide = ({
   isActive,
   isTransitioning,
   isLeaving,
+  storySlug,
 }) => (
   <section className={`slide ${getSlideClasses(slideContent.__typename)}
     ${isActive ? 'slide--active' : ''}
@@ -59,6 +60,7 @@ const Slide = ({
       textSlideIndex={textSlideIndex}
       textSlideTotal={textSlideTotal}
       storyName={storyName}
+      storySlug={storySlug}
     />
   </section>
 );
@@ -67,11 +69,12 @@ Slide.propTypes = {
   // eslint-disable-next-line
   slideContent: PropTypes.object.isRequired,
   backgroundImageUrl: PropTypes.string.isRequired,
-  hoverText: PropTypes.string,
   onCardSelected: PropTypes.func.isRequired,
   textSlideIndex: PropTypes.number.isRequired,
   textSlideTotal: PropTypes.number.isRequired,
   storyName: PropTypes.string.isRequired,
+  storySlug: PropTypes.string.isRequired,
+  hoverText: PropTypes.string,
   isActive: PropTypes.bool,
   isLeaving: PropTypes.bool,
   isTransitioning: PropTypes.bool,

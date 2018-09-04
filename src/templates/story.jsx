@@ -87,6 +87,7 @@ class StoryPage extends React.Component {
           maxIndex={story.slides.length}
           slides={story.slides}
           storyTitle={story.title}
+          storySlug={story.slug}
           onCardSelected={this.onCardSelected}
         />
       </LayoutWithMetaData>

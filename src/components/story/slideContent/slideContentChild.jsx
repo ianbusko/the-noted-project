@@ -8,7 +8,7 @@ import ShareSlideContent from './shareSlideContent';
 import TextSlideContent from './textSlideContent';
 import VideoSlideContent from './videoSlideContent';
 
-function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyName) {
+function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyName, storySlug) {
   switch (data.__typename) {
     case SlideContentTypes.IntroContent:
       return <IntroSlideContent title={data.title} />;
@@ -21,7 +21,11 @@ function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyNa
         />
       );
     case SlideContentTypes.ShareContent:
-      return <ShareSlideContent />;
+      return (
+        <ShareSlideContent
+          storySlug={storySlug}
+        />
+      );
     case SlideContentTypes.TextContent: {
       const headerImageUrl = get(data, 'headerImage.file.url');
       const textAst = get(data, 'text.childMarkdownRemark.htmlAst');
@@ -45,10 +49,10 @@ function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyNa
 }
 
 const SlideChildContent = ({
-  slideContent, onCardSelected, textSlideIndex, textSlideTotal, storyName,
+  slideContent, onCardSelected, textSlideIndex, textSlideTotal, storyName, storySlug,
 }) => (
   <React.Fragment>
-    {getSwitch(slideContent, onCardSelected, textSlideIndex, textSlideTotal, storyName)}
+    {getSwitch(slideContent, onCardSelected, textSlideIndex, textSlideTotal, storyName, storySlug)}
   </React.Fragment>
 );
 
@@ -59,6 +63,7 @@ SlideChildContent.propTypes = {
   textSlideIndex: PropTypes.number.isRequired,
   textSlideTotal: PropTypes.number.isRequired,
   storyName: PropTypes.string.isRequired,
+  storySlug: PropTypes.string.isRequired,
 };
 
 export default SlideChildContent;

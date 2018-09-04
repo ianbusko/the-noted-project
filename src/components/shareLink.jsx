@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GetShareLinkClasses } from '../shareLinkTypes';
+import getShareLinkUrl from '../shareLinkUrls';
 import '../less/shareLink.less';
 
 const ShareLink = ({ linkType, linkText, linkUrl }) => (
   <a
     className={`share-link ${GetShareLinkClasses(linkType)}`}
-    href={linkUrl}
+    href={getShareLinkUrl(linkType, linkUrl)}
     target="_blank"
     rel="noopener noreferrer"
   >

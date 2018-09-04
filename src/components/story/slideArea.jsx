@@ -13,6 +13,7 @@ const SlideArea = ({
   isScrolling,
   newIndex,
   storyTitle,
+  storySlug,
   onCardSelected,
   onScroll,
   onScrollTo,
@@ -51,6 +52,7 @@ const SlideArea = ({
             textSlideIndex={getTextSlideIndex(slide.slideContent[0].__typename)}
             textSlideTotal={textSlideCount}
             storyName={storyTitle}
+            storySlug={storySlug}
             isActive={index === activeIndex}
             isLeaving={index === activeIndex && isScrolling}
             isTransitioning={index === newIndex && isScrolling}
@@ -81,6 +83,7 @@ SlideArea.propTypes = {
   // eslint-disable-next-line
   slides: PropTypes.arrayOf(shape({})),
   storyTitle: PropTypes.string.isRequired,
+  storySlug: PropTypes.string.isRequired,
   onCardSelected: PropTypes.func.isRequired,
   onScroll: PropTypes.func.isRequired,
   onScrollTo: PropTypes.func.isRequired,
