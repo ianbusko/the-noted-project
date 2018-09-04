@@ -5,6 +5,7 @@ import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 import Wrapper from '../components/wrapper';
 import CardArea from '../components/cardArea';
+import LoadingOverlay from '../components/loadingOverlay';
 import tile from '../images/tile.gif';
 import favicon from '../images/favicon/favicon-32.png';
 import '../less/overrides.less';
@@ -44,6 +45,7 @@ const Layout = ({
       ]}
     />
     <Navigation isStory={isStory} isPlain={isPlain} showLightMenu={isStory || isSplash} />
+    <LoadingOverlay />
     <main>
       { isStory && infoCards.length > 0
         && (
