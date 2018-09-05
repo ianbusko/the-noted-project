@@ -1,10 +1,17 @@
 @import (reference) 'tnp-colors';
 
 .loading-overlay{
+  align-items: center;
   background-color: @cream;
+  display: flex;
   height: 100%;
+  justify-content: center;
   opacity: 1;
   position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
   pointer-events:none;
   transition: opacity 0.4s ease-in;
   width:100%;
@@ -19,6 +26,27 @@
   &.loading-overlay--loaded{
     opacity: 0;
     pointer-events:none;
+  }
+
+  svg{
+    fill:transparent;
+  
+    path {
+      box-sizing: border-box;
+      stroke: @lightBrown;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: line 1.5s ease-in alternate infinite;
+    }
+  }
+}
+
+@keyframes line {
+  from{
+    stroke-dashoffset: 1000;
+  }
+  to{
+    stroke-dashoffset: 0;
   }
 }
 

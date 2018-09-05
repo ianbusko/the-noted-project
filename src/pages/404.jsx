@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../layouts/index';
+import Layout from '../components/layout';
 import withMetaData from '../layouts/withMetadata';
 
 const LayoutWithMetaData = withMetaData(Layout);

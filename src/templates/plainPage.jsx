@@ -9,7 +9,7 @@ import '../less/plainPage.less';
 const LayoutWithMetaData = withMetadata(Layout);
 
 const PlainPage = ({ data }) => (
-  <LayoutWithMetaData>
+  <LayoutWithMetaData isPlain>
     <PlainChildContent contentData={data.contentfulLayout.content[0]} />
   </LayoutWithMetaData>
 );

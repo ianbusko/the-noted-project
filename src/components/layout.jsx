@@ -53,7 +53,7 @@ const Layout = ({
       showLightMenu={!isPlain}
     />
     <LoadingOverlay />
-    <main>
+    <main className={isPlain ? 'plain-page' : ''}>
       { isStory && infoCards.length > 0
         && (
         <CardArea isActive={isCardActive}>
