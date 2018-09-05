@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import Layout from '../layouts/index';
+import Layout from '../components/layout';
 import withMetaData from '../layouts/withMetadata';
 import SlideArea from '../components/story/slideArea';
 import StoryMetaTags from '../components/story/storyMetaTags';
