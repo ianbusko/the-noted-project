@@ -39,7 +39,7 @@ class LoadingOverlay extends React.Component {
   render() {
     const { loading, hasIterated } = this.state;
     return (
-      <div className={`loading-overlay ${loading && !hasIterated ? 'loading-overlay--loading' : 'loading-overlay--loaded'}`}>
+      <div className={`loading-overlay ${!loading && hasIterated ? 'loading-overlay--loaded' : 'loading-overlay--loading'}`}>
         <div>
           <svg
             id="loadingIcon"

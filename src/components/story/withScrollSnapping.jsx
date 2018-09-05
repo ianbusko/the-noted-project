@@ -27,6 +27,7 @@ function withScrollSnapping(WrappedComponent) {
       };
 
       this.scroller = new Scrolling();
+      this.handleContentLoaded = this.handleContentLoaded.bind(this);
       this.handleWindowResize = this.handleWindowResize.bind(this);
       this.handleScroll = this.handleScroll.bind(this);
       this.handleScrollTo = this.handleScrollTo.bind(this);
@@ -36,11 +37,13 @@ function withScrollSnapping(WrappedComponent) {
     componentDidMount() {
       this.handleWindowResize();
       window.addEventListener('resize', this.handleWindowResize);
+      window.addEventListener('load', this.handleContentLoaded);
       window.addEventListener('keydown', this.handleKeys);
     }
 
     componentWillUnmount() {
       window.removeEventListener('resize', this.handleWindowResize);
+      window.removeEventListener('load', this.handleContentLoaded);
       window.removeEventListener('keydown', this.handleKeys);
     }
 
@@ -115,6 +118,16 @@ function withScrollSnapping(WrappedComponent) {
         isMobile: window.innerWidth <= mobileWidth,
       });
       this.setBodyOverflow();
+    }
+
+    handleContentLoaded() {
+      const { windowHeight } = this.state;
+      const scrollPosition = window.scrollY;
+      const newIndex = scrollPosition / windowHeight;
+      this.setState({
+        activeIndex: newIndex,
+      });
+      return true;
     }
 
     scrollToIndex(index) {
