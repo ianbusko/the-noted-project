@@ -5,7 +5,7 @@ class LoadingOverlay extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-      loading: true,
+      loaded: false,
       hasIterated: false,
     });
 
@@ -14,7 +14,14 @@ class LoadingOverlay extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('load', this.handleWindowLoaded);
+    const isLoaded = document.readyState === 'complete';
+    this.setState({
+      loaded: isLoaded,
+    });
+
+    if (!isLoaded) {
+      window.addEventListener('load', this.handleWindowLoaded);
+    }
     document.querySelector('#loadingIcon').addEventListener('animationiteration', this.handleIterationComplete);
   }
 
@@ -25,7 +32,7 @@ class LoadingOverlay extends React.Component {
 
   handleWindowLoaded() {
     this.setState({
-      loading: false,
+      loaded: true,
     });
     document.querySelector('body').classList.add('loaded');
   }
@@ -34,12 +41,13 @@ class LoadingOverlay extends React.Component {
     this.setState({
       hasIterated: true,
     });
+    document.querySelector('#loadingIcon').removeEventListener('animationiteration', this.handleIterationComplete);
   }
 
   render() {
-    const { loading, hasIterated } = this.state;
+    const { loaded, hasIterated } = this.state;
     return (
-      <div className={`loading-overlay ${!loading && hasIterated ? 'loading-overlay--loaded' : 'loading-overlay--loading'}`}>
+      <div className={`loading-overlay ${loaded && hasIterated ? 'loading-overlay--loaded' : 'loading-overlay--loading'}`}>
         <div>
           <svg
             id="loadingIcon"
