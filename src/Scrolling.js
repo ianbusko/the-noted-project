@@ -7,14 +7,17 @@ export default class {
       duration: 1000,
     }, options);
 
-    this.start = window.pageYOffset;
-    this.distance = 0;
-    this.duration = this.settings.duration;
-    this.timeStart = 0;
-    this.timeElapsed = 0;
+    if (typeof window !== 'undefined') {
+      this.start = window.pageYOffset;
+      this.distance = 0;
+      this.duration = this.settings.duration;
+      this.timeStart = 0;
+      this.timeElapsed = 0;
+    }
   }
 
   scrollTo(target, instant = false) {
+    if (typeof window === 'undefined') { return new Promise().resolve; }
     this.start = window.pageYOffset;
     this.distance = target - this.start;
     this.duration = instant ? 0 : this.settings.duration;

@@ -23,7 +23,7 @@ function withScrollSnapping(WrappedComponent) {
         scrolling: false,
         windowHeight: 0,
         disabled: false,
-        isMobile: window.innerWidth <= mobileWidth,
+        isMobile: false,
       };
 
       this.scroller = new Scrolling();

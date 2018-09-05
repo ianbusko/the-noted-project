@@ -11,41 +11,56 @@ const shareLinks = [
   { type: ShareLinkType.Twitter, text: 'twitter' },
 ];
 
-const ShareSlideContent = ({ storySlug }) => {
-  // TODO: fix this to read location from metadata
-  // TODO: remove window from code
-  const shareUrl = `${window.location.host}/story/${storySlug}`;
-  return (
-    <div className="share-slide-content">
-      <p className="share-slide-content__text">Watch the next story or share this story with your friends.</p>
+class ShareSlideContent extends React.Component {
+  constructor(props) {
+    super(props);
 
-      <div className="share-slide-content__share-row">
+    this.state = {
+      shareUrl: '',
+    };
+  }
 
-        <div className="share-links">
-          <ShareLink
-            linkType={ShareLinkType.Placeholder}
-            linkText="Share this Story"
-          />
-          <div className="link-wrapper">
-            {shareLinks.map(link => (
-              <ShareLink
-                key={link.type}
-                linkType={link.type}
-                linkText={link.text}
-                linkUrl={shareUrl}
-              />
-            ))}
+  componentDidMount() {
+    const { storySlug } = this.props;
+    this.setState({
+      shareUrl: `${window.location.host}/story/${storySlug}`,
+    });
+  }
+
+  render() {
+    const { shareUrl } = this.state;
+    return (
+      <div className="share-slide-content">
+        <p className="share-slide-content__text">Watch the next story or share this story with your friends.</p>
+
+        <div className="share-slide-content__share-row">
+
+          <div className="share-links">
+            <ShareLink
+              linkType={ShareLinkType.Placeholder}
+              linkText="Share this Story"
+            />
+            <div className="link-wrapper">
+              {shareLinks.map(link => (
+                <ShareLink
+                  key={link.type}
+                  linkType={link.type}
+                  linkText={link.text}
+                  linkUrl={shareUrl}
+                />
+              ))}
+            </div>
           </div>
-        </div>
 
-        <ShareLink
-          linkType={ShareLinkType.Story}
-          linkText="next story"
-        />
+          <ShareLink
+            linkType={ShareLinkType.Story}
+            linkText="next story"
+          />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 ShareSlideContent.propTypes = {
   storySlug: PropTypes.string.isRequired,
