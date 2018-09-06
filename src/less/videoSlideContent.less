@@ -32,6 +32,22 @@
 
     @media @smallScreen, @phone {
       font-size: 2rem;
+      max-width: 13rem;
     }
+  }
+}
+
+.slide.video-slide {
+  background-color: @darkBrown;
+
+  @media @smallScreen, @phone {
+    .slide-background,
+    .slide-background-cover {
+      display: none;
+    }
+
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0 0 0;
   }
 }
