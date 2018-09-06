@@ -22,9 +22,7 @@ class VideoPlayer extends React.Component {
           width="640"
           height="272"
           frameBorder="0"
-          webkitallowfullscreen
-          mozallowfullscreen
-          allowFullScreen
+          allow="fullscreen"
         />
       </div>
     );
