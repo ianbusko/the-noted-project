@@ -1,3 +1,5 @@
+const PostCssPresetEnv = require('postcss-preset-env');
+const AutoPrefixer = require('autoprefixer');
 const Contentful = require('./.contentful.json');
 
 module.exports = {
@@ -7,7 +9,12 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-eslint',
-    'gatsby-plugin-less',
+    {
+      resolve: 'gatsby-plugin-less',
+      options: {
+        postCssPlugins: [PostCssPresetEnv(), AutoPrefixer()],
+      },
+    },
     'gatsby-transformer-remark',
     {
       resolve: 'gatsby-source-contentful',
