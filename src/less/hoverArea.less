@@ -25,11 +25,6 @@
     bottom: @hoverAreaSmallOffsetY;
     left: @hoverAreaSmallOffsetX;
   }
-
-  &.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
 }
 
 /* PRESENTATION */
@@ -39,6 +34,10 @@
   flex-direction: column;
   transition: opacity 0.2s ease-in;
   z-index: 5;
+
+  @media @phone, @smallScreen{
+    display: none;
+  }
 
   &:after {
     content: 'View Photo';

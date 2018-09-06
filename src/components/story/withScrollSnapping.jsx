@@ -110,14 +110,11 @@ function withScrollSnapping(WrappedComponent) {
     }
 
     handleWindowResize() {
-      this.setState({ windowHeight: window.innerHeight });
       this.setState({
+        windowHeight: window.innerHeight,
         disabled: window.innerWidth <= mobileWidth,
-      });
-      this.setState({
         isMobile: window.innerWidth <= mobileWidth,
-      });
-      this.setBodyOverflow();
+      }, this.setBodyOverflow);
     }
 
     handleContentLoaded() {
