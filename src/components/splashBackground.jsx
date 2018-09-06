@@ -9,9 +9,7 @@ const SplashBackground = () => (
       id="splash-background__video"
       src="//player.vimeo.com/video/177154800?api=1&background=1"
       frameBorder="0"
-      webkitallowfullscreen
-      mozallowfullscreen
-      allowFullScreen
+      allow="fullscreen"
     />
   </div>
 );
