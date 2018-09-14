@@ -3,56 +3,30 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import MobileMenu from './mobileMenu';
-import NavTrigger from './navTrigger';
 import ShareLink from './shareLink';
 import '../less/header.less';
 
-class Navigation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMenuActive: false,
-    };
+const Navigation = ({
+  isStory, isSplash, isPlain, showLightMenu, data,
+}) => {
+  const links = get(data, 'allContentfulLayout.edges')
+    .map(edge => ({
+      slug: edge.node.slug,
+      title: edge.node.title,
+    }));
 
-    this.onNavTriggerClick = this.onNavTriggerClick.bind(this);
-  }
+  links.unshift({
+    slug: '/',
+    title: 'Home',
+  });
 
-  onNavTriggerClick() {
-    const { isMenuActive } = this.state;
-    if (!isMenuActive) {
-      this.setState({
-        isMenuActive: true,
-      });
-    } else {
-      this.setState({
-        isMenuActive: false,
-      });
-    }
-  }
-
-  render() {
-    const {
-      isStory, isSplash, isPlain, showLightMenu, data,
-    } = this.props;
-    const { isMenuActive } = this.state;
-    const links = get(data, 'allContentfulLayout.edges')
-      .map(edge => ({
-        slug: edge.node.slug,
-        title: edge.node.title,
-      }));
-
-    links.unshift({
-      slug: '/',
-      title: 'Home',
-    });
-
-    return (
+  return (
+    <>
       <header
         role="navigation"
         className={`header-row
           ${isStory ? 'header-row--story' : ''}
-          ${isSplash ? 'header-row--splash' : ''}
-          ${isMenuActive ? ' menu-active' : ''}`
+          ${isSplash ? 'header-row--splash' : ''}`
         }
       >
         <section className={`tnp-header ${showLightMenu ? 'light' : ''}`}>
@@ -96,19 +70,15 @@ class Navigation extends React.Component {
               </div>
             </div>
           </div>
-          <NavTrigger
-            onTriggerClick={this.onNavTriggerClick}
-            isActive={isMenuActive}
-          />
         </section>
-        <MobileMenu
-          isActive={isMenuActive}
-          links={links}
-        />
       </header>
-    );
-  }
-}
+      <MobileMenu
+        links={links}
+        isPlain={isPlain}
+      />
+    </>
+  );
+};
 
 Navigation.propTypes = {
   isStory: PropTypes.bool,
