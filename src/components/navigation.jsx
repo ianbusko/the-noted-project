@@ -41,6 +41,11 @@ class Navigation extends React.Component {
         title: edge.node.title,
       }));
 
+    links.unshift({
+      slug: '/',
+      title: 'Home',
+    });
+
     return (
       <header
         role="navigation"
@@ -65,9 +70,6 @@ class Navigation extends React.Component {
                 {link.title}
               </Link>
             ))}
-            <a href="http://blog.thenotedproject.org" target="_blank" rel="noopener noreferrer">
-              Blog
-            </a>
           </nav>
           <div className="header-media no-mobile">
             <div className="share-links">

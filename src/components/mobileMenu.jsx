@@ -19,11 +19,6 @@ const MobileMenu = ({ links }) => (
           </li>
         ))
       }
-      <li>
-        <a href="http://blog.thenotedproject.org" target="_blank" rel="noopener noreferrer">
-          Blog
-        </a>
-      </li>
     </ul>
     <div className="header-media">
       <div className="share-tnp">
