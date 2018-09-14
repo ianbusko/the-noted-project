@@ -24,6 +24,7 @@ function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyNa
       return (
         <ShareSlideContent
           storySlug={storySlug}
+          sharingText={data.sharingText}
         />
       );
     case SlideContentTypes.TextContent: {

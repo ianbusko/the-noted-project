@@ -29,9 +29,10 @@ class ShareSlideContent extends React.Component {
 
   render() {
     const { shareUrl } = this.state;
+    const { sharingText } = this.props;
     return (
       <div className="share-slide-content">
-        <p className="share-slide-content__text">Watch the next story or share this story with your friends.</p>
+        <p className="share-slide-content__text">{sharingText}</p>
 
         <div className="share-slide-content__share-row">
 
@@ -64,6 +65,7 @@ class ShareSlideContent extends React.Component {
 
 ShareSlideContent.propTypes = {
   storySlug: PropTypes.string.isRequired,
+  sharingText: PropTypes.string.isRequired,
 };
 
 export default ShareSlideContent;
@@ -71,5 +73,6 @@ export default ShareSlideContent;
 export const shareSlideContentFragment = graphql`
   fragment shareSlideContentFragment on ContentfulSlideContentShare{
     sharingTitle
+    sharingText
   }
 `;
