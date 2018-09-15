@@ -29,7 +29,8 @@ class ShareSlideContent extends React.Component {
 
   render() {
     const { shareUrl } = this.state;
-    const { sharingText } = this.props;
+    const { sharingText, nextStorySlug } = this.props;
+
     return (
       <div className="share-slide-content">
         <p className="share-slide-content__text">{sharingText}</p>
@@ -56,6 +57,8 @@ class ShareSlideContent extends React.Component {
           <ShareLink
             linkType={ShareLinkType.Story}
             linkText="next story"
+            linkUrl={`/story/${nextStorySlug}`}
+            openNewTab={false}
           />
         </div>
       </div>
@@ -66,6 +69,7 @@ class ShareSlideContent extends React.Component {
 ShareSlideContent.propTypes = {
   storySlug: PropTypes.string.isRequired,
   sharingText: PropTypes.string.isRequired,
+  nextStorySlug: PropTypes.string.isRequired,
 };
 
 export default ShareSlideContent;

@@ -8,7 +8,9 @@ import ShareSlideContent from './shareSlideContent';
 import TextSlideContent from './textSlideContent';
 import VideoSlideContent from './videoSlideContent';
 
-function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyName, storySlug) {
+function getSwitch(
+  data, onCardSelected, textSlideIndex, textSlideTotal, storyName, storySlug, nextStorySlug,
+) {
   switch (data.__typename) {
     case SlideContentTypes.IntroContent:
       return <IntroSlideContent title={data.title} />;
@@ -25,6 +27,7 @@ function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyNa
         <ShareSlideContent
           storySlug={storySlug}
           sharingText={data.sharingText}
+          nextStorySlug={nextStorySlug}
         />
       );
     case SlideContentTypes.TextContent: {
@@ -50,10 +53,24 @@ function getSwitch(data, onCardSelected, textSlideIndex, textSlideTotal, storyNa
 }
 
 const SlideChildContent = ({
-  slideContent, onCardSelected, textSlideIndex, textSlideTotal, storyName, storySlug,
+  slideContent,
+  onCardSelected,
+  textSlideIndex,
+  textSlideTotal,
+  storyName,
+  storySlug,
+  nextStorySlug,
+  previousStorySlug,
 }) => (
   <React.Fragment>
-    {getSwitch(slideContent, onCardSelected, textSlideIndex, textSlideTotal, storyName, storySlug)}
+    {getSwitch(slideContent,
+      onCardSelected,
+      textSlideIndex,
+      textSlideTotal,
+      storyName,
+      storySlug,
+      nextStorySlug,
+      previousStorySlug)}
   </React.Fragment>
 );
 
@@ -65,6 +82,8 @@ SlideChildContent.propTypes = {
   textSlideTotal: PropTypes.number.isRequired,
   storyName: PropTypes.string.isRequired,
   storySlug: PropTypes.string.isRequired,
+  nextStorySlug: PropTypes.string.isRequired,
+  previousStorySlug: PropTypes.string.isRequired,
 };
 
 export default SlideChildContent;

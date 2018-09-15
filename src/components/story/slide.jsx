@@ -34,6 +34,8 @@ const Slide = ({
   isTransitioning,
   isLeaving,
   storySlug,
+  nextStorySlug,
+  previousStorySlug,
 }) => (
   <section className={`slide ${getSlideClasses(slideContent.__typename)}
     ${isActive ? 'slide--active' : ''}
@@ -61,6 +63,8 @@ const Slide = ({
       textSlideTotal={textSlideTotal}
       storyName={storyName}
       storySlug={storySlug}
+      nextStorySlug={nextStorySlug}
+      previousStorySlug={previousStorySlug}
     />
   </section>
 );
@@ -74,6 +78,8 @@ Slide.propTypes = {
   textSlideTotal: PropTypes.number.isRequired,
   storyName: PropTypes.string.isRequired,
   storySlug: PropTypes.string.isRequired,
+  nextStorySlug: PropTypes.string.isRequired,
+  previousStorySlug: PropTypes.string.isRequired,
   hoverText: PropTypes.string,
   isActive: PropTypes.bool,
   isLeaving: PropTypes.bool,

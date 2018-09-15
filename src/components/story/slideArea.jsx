@@ -14,6 +14,8 @@ const SlideArea = ({
   newIndex,
   storyTitle,
   storySlug,
+  nextStorySlug,
+  previousStorySlug,
   onCardSelected,
   onScroll,
   onScrollTo,
@@ -53,6 +55,8 @@ const SlideArea = ({
             textSlideTotal={textSlideCount}
             storyName={storyTitle}
             storySlug={storySlug}
+            nextStorySlug={nextStorySlug}
+            previousStorySlug={previousStorySlug}
             isActive={index === activeIndex}
             isLeaving={index === activeIndex && isScrolling}
             isTransitioning={index === newIndex && isScrolling}
@@ -87,6 +91,8 @@ SlideArea.propTypes = {
   onCardSelected: PropTypes.func.isRequired,
   onScroll: PropTypes.func.isRequired,
   onScrollTo: PropTypes.func.isRequired,
+  nextStorySlug: PropTypes.string.isRequired,
+  previousStorySlug: PropTypes.string.isRequired,
 };
 
 SlideArea.defaultProps = {
