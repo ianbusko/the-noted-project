@@ -163,8 +163,11 @@ function withScrollSnapping(WrappedComponent) {
     }
 
     scrollToIndex(index) {
+      const { maxIndex } = this.props;
       const { windowHeight } = this.state;
       const scrollPosition = index * windowHeight;
+
+      if (index >= maxIndex || index < 0) { return; }
 
       this.setState({
         scrolling: true,
