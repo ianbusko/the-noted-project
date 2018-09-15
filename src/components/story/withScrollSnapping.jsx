@@ -12,6 +12,19 @@ const scrollDirections = {
 
 const mobileWidth = 1024;
 
+const isAccelerating = (samples) => {
+  function average(num) {
+    const lastElements = samples.slice(Math.max(samples.length - num, 1));
+    const sum = lastElements.reduce((total, element) => total + element, 0);
+    return Math.ceil(sum / num);
+  }
+
+  const avEnd = average(10);
+  const avMiddle = average(70);
+
+  return avEnd >= avMiddle;
+};
+
 function withScrollSnapping(WrappedComponent) {
   class WithScrollSnapping extends Component {
     constructor(props) {
@@ -24,6 +37,8 @@ function withScrollSnapping(WrappedComponent) {
         windowHeight: 0,
         disabled: false,
         isMobile: false,
+        lastScrollTime: new Date().getTime(),
+        scrollSamples: [],
       };
 
       this.scroller = new Scrolling();
@@ -62,12 +77,32 @@ function withScrollSnapping(WrappedComponent) {
       return newIndex;
     }
 
+    updateScrollSamples(currentDelta) {
+      const { lastScrollTime, scrollSamples } = this.state;
+      const currentScrollTime = new Date().getTime();
+      scrollSamples.push(currentDelta);
+      if (scrollSamples.length > 149) {
+        scrollSamples.shift();
+      }
+
+      const isTimeElapsed = (currentScrollTime - lastScrollTime) > 200;
+      this.setState({
+        lastScrollTime: currentScrollTime,
+        scrollSamples: isTimeElapsed ? [] : scrollSamples,
+      });
+
+      return isTimeElapsed ? [] : scrollSamples;
+    }
+
     handleScroll(e) {
       const {
         scrolling, activeIndex, disabled,
       } = this.state;
+
+      const scrollSamples = this.updateScrollSamples(e.deltaY);
+
       if (disabled) { return true; }
-      if (scrolling) {
+      if (scrolling || !isAccelerating(scrollSamples)) {
         e.preventDefault();
         return false;
       }
@@ -128,8 +163,11 @@ function withScrollSnapping(WrappedComponent) {
     }
 
     scrollToIndex(index) {
+      const { maxIndex } = this.props;
       const { windowHeight } = this.state;
       const scrollPosition = index * windowHeight;
+
+      if (index >= maxIndex || index < 0) { return; }
 
       this.setState({
         scrolling: true,
