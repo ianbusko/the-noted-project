@@ -9,7 +9,7 @@ function getShareLinkUrl(type, url) {
     case ShareLinkType.Twitter:
       return encodeURI(`https://twitter.com/share?url=${url}`);
     default:
-      return '';
+      return url;
   }
 }
 

@@ -88,6 +88,8 @@ class StoryPage extends React.Component {
           slides={story.slides}
           storyTitle={story.title}
           storySlug={story.slug}
+          nextStorySlug={story.nextStory.slug}
+          previousStorySlug={story.previousStory.slug}
           onCardSelected={this.onCardSelected}
         />
       </LayoutWithMetaData>
@@ -107,6 +109,12 @@ export const pageQuery = graphql`
     contentfulStory(slug: { eq: $slug }) {
       slug
       title
+      nextStory{
+        slug
+      }
+      previousStory{
+        slug
+      }
       metaTagTitle
       metaTagDescription
       metaTagImage {
