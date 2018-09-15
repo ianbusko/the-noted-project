@@ -19,6 +19,8 @@ function getSwitch(data) {
       return (
         <ContactContent
           emailAddress={data.contactEmailAddress}
+          emailSubject={data.emailSubject}
+          bodyCopy={data.bodyCopy.childMarkdownRemark}
           key={`${data.contentType}`}
         />
       );
