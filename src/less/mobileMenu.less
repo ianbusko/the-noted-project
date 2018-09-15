@@ -1,71 +1,111 @@
-@import (reference) "tnp-colors";
-@import (reference) "tnp-fonts";
-@import (reference) "tnp-media-queries";
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-fonts';
+@import (reference) 'tnp-media-queries';
 
-.mobile-menu{
-  background-color:@lightBrown;
-  display:block;
-  flex-grow:0;
-  flex-shrink:1;
-  flex-direction:column;
-  justify-content:center;
-  height:0;
-  overflow:hidden;
-  transition:all .25s ease-out;
+@media @phone, @smallScreen {
+  body.menu-active {
+    overflow: hidden;
+  }
+}
 
-  @media @largeScreen{
-    display:flex;
+.mobile-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: @navHeight;
+  justify-content: space-between;
+  padding: 0 3em;
+
+  @media @largeScreen {
+    display: none;
   }
 
-  ul{
-    padding:0;
-    margin:1.25em 0;
+  @media @phone {
+    padding: 0 1.5em;
+  }
 
-    & > li{
-      color:@cream;
-      cursor:pointer;
+  &:not(.mobile-header--plain){
+    background: @cream center center no-repeat;
+  }
+}
+
+.mobile-header__logo {
+  background-image: url('../images/logo-text-brown.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  height: 47px;
+  width: 137px;
+}
+
+.mobile-menu {
+  background-color: @lightBrown;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-direction: column;
+  justify-content: center;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.25s ease-out;
+  will-change: height;
+
+  @media @largeScreen {
+    display: none;
+  }
+
+  ul {
+    padding: 0;
+    margin: 1.25em 0;
+
+    & > li {
+      color: @cream;
+      cursor: pointer;
       font-size: 1.5em;
       font-family: @minimoBold;
-      padding:.75em 0;
+      padding: 0.75em 0;
       text-align: center;
       text-transform: uppercase;
       transition: all 0.3s ease-out;
-      width:100%;
+      width: 100%;
 
       /* hack to make mobile work */
       line-height: 1em;
-      height:2.5em;
+      height: 2.5em;
 
-      & > a{
-        color:@cream;
+      & > a {
+        color: @cream;
       }
 
-      &:hover{
-        background-color:@darkBrown;
+      &:hover {
+        background-color: @darkBrown;
         transition: all 0.2s ease-out;
       }
     }
   }
 
-  .header-media{
-    align-self:inherit;
-    display:flex;
+  &.mobile-menu--active {
+    height: calc(~'100vh - @{navHeight}');
+  }
+
+  .mobile-menu__share {
+    display: flex;
+  }
+
+  .header-media {
+    align-self: inherit;
+    display: flex;
     flex-direction: column;
-    margin:0 0 5em;
+    margin: 0 0 5em;
     text-align: center;
 
-    .share-tnp{
-      color:@cream;
+    .header-media__share-text {
+      color: @cream;
       font-family: @minimoBold;
       letter-spacing: 1px;
-      margin-right:0;
+      margin-right: 0;
       padding-bottom: 1.5em;
       text-transform: uppercase;
     }
   }
 }
-
-.mobile-menu__share{
-  display: flex;
-}
-
