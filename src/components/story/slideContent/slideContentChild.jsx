@@ -9,11 +9,24 @@ import TextSlideContent from './textSlideContent';
 import VideoSlideContent from './videoSlideContent';
 
 function getSwitch(
-  data, onCardSelected, textSlideIndex, textSlideTotal, storyName, storySlug, nextStorySlug,
+  data,
+  onCardSelected,
+  textSlideIndex,
+  textSlideTotal,
+  storyName,
+  storySlug,
+  nextStorySlug,
+  previousStorySlug,
 ) {
   switch (data.__typename) {
     case SlideContentTypes.IntroContent:
-      return <IntroSlideContent title={data.title} />;
+      return (
+        <IntroSlideContent
+          title={data.title}
+          previousStorySlug={previousStorySlug}
+          nextStorySlug={nextStorySlug}
+        />
+      );
     case SlideContentTypes.QuoteContent:
       return (
         <QuoteSlideContent

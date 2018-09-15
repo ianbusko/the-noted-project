@@ -5,13 +5,13 @@ import ArrowLink from '../arrowLink';
 import logoIcon from '../../../images/logo-icon.svg';
 import '../../../less/introSlideContent.less';
 
-const IntroSlideContent = ({ title, previousStoryLink, nextStoryLink }) => (
+const IntroSlideContent = ({ title, previousStorySlug, nextStorySlug }) => (
   <div className="intro-slide">
 
     <ArrowLink
       direction="left"
       linkText="Previous Story"
-      linkUrl={previousStoryLink}
+      linkUrl={`/story/${previousStorySlug}`}
     />
 
     <div className="intro-slide__main">
@@ -27,7 +27,7 @@ const IntroSlideContent = ({ title, previousStoryLink, nextStoryLink }) => (
     <ArrowLink
       direction="right"
       linkText="Next Story"
-      linkUrl={nextStoryLink}
+      linkUrl={`/story/${nextStorySlug}`}
     />
 
   </div>
@@ -35,13 +35,13 @@ const IntroSlideContent = ({ title, previousStoryLink, nextStoryLink }) => (
 
 IntroSlideContent.propTypes = {
   title: PropTypes.string.isRequired,
-  previousStoryLink: PropTypes.string,
-  nextStoryLink: PropTypes.string,
+  previousStorySlug: PropTypes.string,
+  nextStorySlug: PropTypes.string,
 };
 
 IntroSlideContent.defaultProps = {
-  previousStoryLink: '',
-  nextStoryLink: '',
+  previousStorySlug: '',
+  nextStorySlug: '',
 };
 
 export default IntroSlideContent;
