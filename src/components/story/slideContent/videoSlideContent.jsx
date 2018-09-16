@@ -19,12 +19,18 @@ class VideoSlideContent extends React.Component {
 
     this.playVideo = this.playVideo.bind(this);
     this.stopVideo = this.stopVideo.bind(this);
+    this.handleScreenResize = this.handleScreenResize.bind(this);
   }
 
   componentDidMount() {
     this.setState({
       player: new Player(videoPlayerId),
     });
+    window.addEventListener('resize', this.handleScreenResize);
+  }
+
+  componentWillUnmount() {
+    window.addEventListener('resize', this.handleScreenResize);
   }
 
   playVideo() {
@@ -42,6 +48,10 @@ class VideoSlideContent extends React.Component {
     this.setState({
       isPlaying: false,
     });
+  }
+
+  handleScreenResize() {
+    this.stopVideo();
   }
 
   render() {
