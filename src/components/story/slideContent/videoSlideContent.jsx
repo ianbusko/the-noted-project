@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Player from '@vimeo/player';
 import { graphql } from 'gatsby';
 import VideoPlayIcon from '../../videoPlayIcon';
 import VideoPlayer from '../../videoPlayer';
 import '../../../less/videoSlideContent.less';
+
+const videoPlayerId = 'tnpVideo';
 
 class VideoSlideContent extends React.Component {
   constructor(props) {
@@ -11,10 +14,17 @@ class VideoSlideContent extends React.Component {
 
     this.state = {
       isPlaying: false,
+      player: undefined,
     };
 
     this.playVideo = this.playVideo.bind(this);
     this.stopVideo = this.stopVideo.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      player: new Player(videoPlayerId),
+    });
   }
 
   playVideo() {
@@ -26,6 +36,8 @@ class VideoSlideContent extends React.Component {
   }
 
   stopVideo() {
+    const { player } = this.state;
+    player.pause();
     document.querySelector('body').style.overflow = '';
     this.setState({
       isPlaying: false,
@@ -43,6 +55,7 @@ class VideoSlideContent extends React.Component {
         </div>
 
         <VideoPlayer
+          videoPlayerId={videoPlayerId}
           videoUrl={videoUrl}
           onCloseClick={this.stopVideo}
           isActive={isPlaying}

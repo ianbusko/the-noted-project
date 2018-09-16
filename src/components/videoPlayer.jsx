@@ -6,7 +6,9 @@ import '../less/videoPlayer.less';
 // eslint-disable-next-line
 class VideoPlayer extends React.Component {
   render() {
-    const { isActive, onCloseClick, videoUrl } = this.props;
+    const {
+      isActive, onCloseClick, videoUrl, videoPlayerId,
+    } = this.props;
     return (
       <div className={`video-player ${
         isActive ? 'active' : ''}`}
@@ -16,7 +18,7 @@ class VideoPlayer extends React.Component {
         />
         {/* eslint-disable-next-line */}
         <iframe
-          id="tnpVideo"
+          id={videoPlayerId}
           className="video-player__frame"
           src={videoUrl}
           width="640"
@@ -30,6 +32,7 @@ class VideoPlayer extends React.Component {
 }
 
 VideoPlayer.propTypes = {
+  videoPlayerId: PropTypes.string.isRequired,
   videoUrl: PropTypes.string.isRequired,
   onCloseClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
