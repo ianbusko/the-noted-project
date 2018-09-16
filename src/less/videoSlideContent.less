@@ -41,13 +41,13 @@
   background-color: @darkBrown;
 
   @media @smallScreen, @phone {
+    display: flex;
+    flex-direction: column;
+    padding: 4em 0;
+    
     .slide-background,
     .slide-background-cover {
       display: none;
     }
-
-    display: flex;
-    flex-direction: column;
-    padding: 1em 0 0 0;
   }
 }
