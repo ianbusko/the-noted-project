@@ -1,17 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../less/splashBackground.less';
 
-// TODO: configure the bg video in Contentful
-const SplashBackground = () => (
-  <div className="splash-background">
+const SplashBackground = ({ backgroundImageUrl, videoUrl }) => (
+  <div
+    className="splash-background"
+    style={{
+      backgroundImage: `url(${backgroundImageUrl})`,
+    }}
+  >
     <iframe
       title="The Noted Project"
       id="splash-background__video"
-      src="//player.vimeo.com/video/177154800?api=1&background=1"
+      src={videoUrl}
       frameBorder="0"
       allow="fullscreen"
     />
   </div>
 );
+
+SplashBackground.propTypes = {
+  backgroundImageUrl: PropTypes.string.isRequired,
+  videoUrl: PropTypes.string.isRequired,
+};
 
 export default SplashBackground;
