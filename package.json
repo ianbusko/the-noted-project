@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Ian Busko <ian.busko@gmail.com>",
   "dependencies": {
+    "@vimeo/player": "^2.6.3",
     "autoprefixer": "^9.1.5",
     "gatsby": "next",
     "gatsby-plugin-google-fonts": "^0.0.4",
