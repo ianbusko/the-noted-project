@@ -9,16 +9,11 @@ import '../less/header.less';
 const Navigation = ({
   isStory, isSplash, isPlain, showLightMenu, data,
 }) => {
-  const links = get(data, 'allContentfulLayout.edges')
-    .map(edge => ({
-      slug: edge.node.slug,
-      title: edge.node.title,
+  const links = get(data, 'contentfulSiteMetaContent.links')
+    .map(link => ({
+      slug: link.slug ? link.slug : '',
+      title: link.title,
     }));
-
-  links.unshift({
-    slug: '/',
-    title: 'Home',
-  });
 
   return (
     <>
@@ -31,9 +26,9 @@ const Navigation = ({
       >
         <section className={`tnp-header ${showLightMenu ? 'light' : ''}`}>
           <div className={`header-logo-wrapper ${isPlain ? 'plain' : ''}`}>
-            <a className="header-logo" href="\">
+            <div className="header-logo">
               <span style={{ display: 'none' }}>The Noted Project Home</span>
-            </a>
+            </div>
           </div>
           <nav className="header-links no-mobile">
             {links.map(link => (
@@ -109,12 +104,10 @@ export default props => (
   <StaticQuery
     query={graphql`
       query NavigationQuery {
-        allContentfulLayout{
-          edges{
-            node{
-              slug
-              title
-            }
+        contentfulSiteMetaContent{
+          links{
+            title
+            slug
           }
         }
       }
