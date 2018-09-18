@@ -1,33 +1,37 @@
-@import (reference) "tnp-colors";
-@import (reference) "tnp-fonts";
-@import (reference) "tnp-media-queries";
+@import (reference) 'tnp-colors';
+@import (reference) 'tnp-fonts';
+@import (reference) 'tnp-media-queries';
 
-.intro-slide{
+.intro-slide {
   align-items: center;
   display: flex;
   justify-content: space-around;
   width: 100%;
 
-  .arrow-link{
-    @media @smallScreen, @phone{
+  .arrow-link {
+    @media @smallScreen, @phone {
       display: none;
     }
   }
 }
 
-.intro-slide__main{
+.intro-slide__main {
   align-items: center;
   flex-direction: column;
   display: flex;
 }
 
-.intro-slide__logo{
+.intro-slide__logo {
   margin-bottom: 2rem;
 }
 
-.intro-slide__title{
+.intro-slide__title {
   color: @cream;
   font-family: @minimoRegular;
   font-size: 4.5em;
   font-weight: normal;
+
+  @media @phone, @smallScreen {
+    font-size: 3.5em;
+  }
 }
