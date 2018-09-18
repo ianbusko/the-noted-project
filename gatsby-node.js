@@ -33,15 +33,17 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const plainPages = result.data.allContentfulLayout.edges;
-        plainPages.forEach((page) => {
-          createPage({
-            path: `${page.node.slug}`,
-            component: plainPage,
-            context: {
-              slug: page.node.slug,
-            },
+        plainPages
+          .filter(page => page.node.slug)
+          .forEach((page) => {
+            createPage({
+              path: `${page.node.slug}`,
+              component: plainPage,
+              context: {
+                slug: page.node.slug,
+              },
+            });
           });
-        });
 
         const storyPages = result.data.allContentfulStory.edges;
         storyPages.forEach((page) => {
