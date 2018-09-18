@@ -45,16 +45,32 @@
       display: none;
     }
 
-    @media screen and (min-device-aspect-ratio: 16/9) {
+    @media (min-aspect-ratio: 16/9) {
       width: 100%;
       height: 300%;
       top: -100%;
     }
 
-    @media screen and (max-device-aspect-ratio: 16/9) {
+    @media (max-aspect-ratio: 16/9) {
       width: 300%;
       height: 100vh;
       left: -100%;
     }
+  }
+}
+
+@media (min-aspect-ratio: 16/9) {
+  iframe#splash-background__video {
+    width: 100%;
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  iframe#splash-background__video {
+    width: 300%;
+    height: 100vh;
+    left: -100%;
   }
 }

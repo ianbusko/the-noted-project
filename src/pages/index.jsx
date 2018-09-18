@@ -45,7 +45,6 @@ const IndexPage = ({ data }) => {
         backgroundImageUrl={splashMobileBackground.file.url}
         videoUrl={splashBackgroundVideo}
       />
-      {/* "//player.vimeo.com/video/177154800?api=1&background=1" */}
     </LayoutWithMetadata>
   );
 };
