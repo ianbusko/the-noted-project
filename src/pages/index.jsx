@@ -6,8 +6,8 @@ import Layout from '../components/layout';
 import withMetadata from '../layouts/withMetadata';
 import SplashBackground from '../components/splashBackground';
 import logo from '../images/logo-icon.svg';
-import '../less/splash.less';
 import SplashStoryLink from '../components/splashStoryLink';
+import '../less/splash.less';
 
 const LayoutWithMetadata = withMetadata(Layout);
 

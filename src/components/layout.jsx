@@ -36,13 +36,16 @@ const Layout = ({
   <div style={getStyles(isPlain)}>
     <Helmet
       title={getTitle(isStory, metaData.title, storyTitle)}
-      meta={[
-        { name: 'og:url', content: 'Sample' },
-        { name: 'og:type', content: 'website' },
-        { name: 'og:title', content: metaData.title },
-        { name: 'og:image', content: 'sample, something' },
-        { name: 'og:description', content: 'sample, something' },
-      ]}
+      meta={
+        isStory
+          ? []
+          : [
+            { name: 'og:url', content: 'Sample' },
+            { name: 'og:type', content: 'website' },
+            { name: 'og:title', content: metaData.title },
+            { name: 'og:image', content: 'sample, something' },
+            { name: 'og:description', content: 'sample, something' },
+          ]}
       link={[
         { rel: 'shortcut icon', type: 'image/png', href: `${favicon}` },
       ]}
