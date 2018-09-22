@@ -35,16 +35,16 @@ const Layout = ({
 }) => (
   <div style={getStyles(isPlain)}>
     <Helmet
-      title={getTitle(isStory, metaData.title, storyTitle)}
+      title={getTitle(isStory, metaData.siteTitle, storyTitle)}
       meta={
         isStory
           ? []
           : [
             { name: 'og:url', content: 'Sample' },
             { name: 'og:type', content: 'website' },
-            { name: 'og:title', content: metaData.title },
-            { name: 'og:image', content: 'sample, something' },
-            { name: 'og:description', content: 'sample, something' },
+            { name: 'og:title', content: metaData.siteTitle },
+            { name: 'og:image', content: `https://${metaData.metaImage.file.url}` },
+            { name: 'og:description', content: metaData.metaDescription },
           ]}
       link={[
         { rel: 'shortcut icon', type: 'image/png', href: `${favicon}` },
@@ -82,7 +82,13 @@ Layout.propTypes = {
   isCardActive: PropTypes.bool,
   infoCards: PropTypes.arrayOf(PropTypes.object),
   metaData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    siteTitle: PropTypes.string.isRequired,
+    metaDescription: PropTypes.string.isRequired,
+    metaImage: PropTypes.shape({
+      file: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+      }),
+    }),
   }).isRequired,
   storyTitle: PropTypes.string,
 };

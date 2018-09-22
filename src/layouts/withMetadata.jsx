@@ -6,15 +6,20 @@ function withMetadata(WrappedComponent) {
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
+          contentfulSiteMetaContent{
+            siteTitle
+            siteUrl
+            metaImage {
+              file{
+                url
+              }
             }
+            metaDescription
           }
         }`}
       render={data => (
         <WrappedComponent
-          metaData={data.site.siteMetadata}
+          metaData={data.contentfulSiteMetaContent}
           {...props}
         />)}
     />
