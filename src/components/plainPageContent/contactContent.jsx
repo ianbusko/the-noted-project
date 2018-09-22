@@ -5,11 +5,16 @@ import Button from '../button';
 
 const ContactContent = ({ emailAddress, emailSubject, bodyCopy }) => (
   <article style={{ flex: '1' }}>
-    <header>
+    <header style={{ margin: 0 }}>
       <h1>Get in Touch</h1>
       <hr />
     </header>
     <div
+      style={{
+        margin: '1em 0 1em 0',
+        maxWidth: '500px',
+        textAlign: 'center',
+      }}
       dangerouslySetInnerHTML={{ __html: bodyCopy.html }}
     />
     <Button
