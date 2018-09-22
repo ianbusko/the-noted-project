@@ -10,7 +10,7 @@ const StoryMetaTags = ({
     <meta property="og:title" content={shareTitle} />
     <meta property="og:type" content="article" />
     <meta property="og:description" content={shareDescription} />
-    <meta property="og:image" content={shareImageUrl} />
+    <meta property="og:image" content={`https:${shareImageUrl}`} />
   </Helmet>
 );
 
