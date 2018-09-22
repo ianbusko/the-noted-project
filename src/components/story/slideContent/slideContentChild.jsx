@@ -40,6 +40,7 @@ function getSwitch(
         <ShareSlideContent
           storySlug={storySlug}
           sharingText={data.sharingText}
+          sharingTitle={data.sharingTitle}
           nextStorySlug={nextStorySlug}
         />
       );

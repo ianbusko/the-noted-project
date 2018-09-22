@@ -11,6 +11,8 @@ const shareLinks = [
   { type: ShareLinkType.Twitter, text: 'twitter' },
 ];
 
+const getShareLinks = shareLinkTitle => shareLinks.map(link => (link.type === ShareLinkType.Twitter ? { ...link, sharingText: `Share ${shareLinkTitle}` } : link));
+
 class ShareSlideContent extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +31,8 @@ class ShareSlideContent extends React.Component {
 
   render() {
     const { shareUrl } = this.state;
-    const { sharingText, nextStorySlug } = this.props;
+    const { sharingText, sharingTitle, nextStorySlug } = this.props;
+    const links = getShareLinks(sharingTitle);
 
     return (
       <div className="share-slide-content">
@@ -43,12 +46,13 @@ class ShareSlideContent extends React.Component {
               linkText="Share this Story"
             />
             <div className="link-wrapper">
-              {shareLinks.map(link => (
+              {links.map(link => (
                 <ShareLink
                   key={link.type}
                   linkType={link.type}
                   linkText={link.text}
                   linkUrl={shareUrl}
+                  linkTextContent={link.sharingText}
                 />
               ))}
             </div>
@@ -69,6 +73,7 @@ class ShareSlideContent extends React.Component {
 ShareSlideContent.propTypes = {
   storySlug: PropTypes.string.isRequired,
   sharingText: PropTypes.string.isRequired,
+  sharingTitle: PropTypes.string.isRequired,
   nextStorySlug: PropTypes.string.isRequired,
 };
 

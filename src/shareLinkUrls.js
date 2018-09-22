@@ -7,7 +7,7 @@ function getShareLinkUrl(type, url, sharingText) {
     case ShareLinkType.Email:
       return encodeURI(`mailto:?subject=${'The Noted Project'}&body=${url}`);
     case ShareLinkType.Twitter:
-      return encodeURI(`https://twitter.com/share?url=https://${encodeURI(url)}&text=${sharingText}`);
+      return encodeURI(`https://twitter.com/intent/tweet?url=https://${encodeURI(url)}&text=${encodeURIComponent(sharingText)}`);
     default:
       return url;
   }
