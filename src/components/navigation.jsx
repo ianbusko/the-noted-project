@@ -14,6 +14,8 @@ const Navigation = ({
       slug: link.slug ? link.slug : '',
       title: link.title,
     }));
+  const siteUrl = get(data, 'contentfulSiteMetaContent.siteUrl');
+  const twitterShareBody = get(data, 'contentfulSiteMetaContent.twitterShareBody');
 
   return (
     <>
@@ -50,17 +52,18 @@ const Navigation = ({
                 <ShareLink
                   linkType="email"
                   linkText="Email"
-                  linkUrl="mailto:?subject=The%20Noted%20Project&body=http://www.thenotedproject.org"
+                  linkUrl={siteUrl}
                 />
                 <ShareLink
                   linkType="facebook"
                   linkText="Facebook"
-                  linkUrl="https://www.facebook.com/sharer/sharer.php?u=TheNotedProject.org"
+                  linkUrl={siteUrl}
                 />
                 <ShareLink
                   linkType="twitter"
                   linkText="Twitter"
-                  linkUrl="https://twitter.com/share?url=https%3A%2F%2Fwww.thenotedproject.org&text=Share%20The%20Noted%20Project:"
+                  linkUrl={siteUrl}
+                  linkTextContent={twitterShareBody}
                 />
               </div>
             </div>
@@ -109,6 +112,8 @@ export default props => (
             title
             slug
           }
+          siteUrl
+          twitterShareBody
         }
       }
     `}
