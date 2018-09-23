@@ -26,9 +26,9 @@ const Navigation = ({
       >
         <section className={`tnp-header ${showLightMenu ? 'light' : ''}`}>
           <div className={`header-logo-wrapper ${isPlain ? 'plain' : ''}`}>
-            <div className="header-logo">
+            <a className="header-logo" href="/">
               <span style={{ display: 'none' }}>The Noted Project Home</span>
-            </div>
+            </a>
           </div>
           <nav className="header-links no-mobile">
             {links.map(link => (
