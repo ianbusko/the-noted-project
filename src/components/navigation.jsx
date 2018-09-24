@@ -4,17 +4,30 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import MobileMenu from './mobileMenu';
 import ShareLink from './shareLink';
+import { ShareLinkType } from '../shareLinkTypes';
 import '../less/header.less';
+
+const shareLinks = [
+  { type: ShareLinkType.Email, text: 'email' },
+  { type: ShareLinkType.Facebook, text: 'facebook' },
+  { type: ShareLinkType.Twitter, text: 'twitter' },
+];
 
 const Navigation = ({
   isStory, isSplash, isPlain, showLightMenu, data,
 }) => {
+  const twitterShareBody = get(data, 'contentfulSiteMetaContent.twitterShareBody');
   const links = get(data, 'contentfulSiteMetaContent.links')
     .map(link => ({
       slug: link.slug ? link.slug : '',
       title: link.title,
     }));
-
+  const siteUrl = get(data, 'contentfulSiteMetaContent.siteUrl');
+  const shareLinksWithTwitter = shareLinks.map(
+    link => (link.type === ShareLinkType.Twitter
+      ? { ...link, linkTextContent: twitterShareBody }
+      : link),
+  );
   return (
     <>
       <header
@@ -42,26 +55,22 @@ const Navigation = ({
           </nav>
           <div className="header-media no-mobile">
             <div className="share-links">
-              <ShareLink
-                linkType="placeholder"
-                linkText="Share"
-              />
               <div className="link-wrapper">
                 <ShareLink
-                  linkType="email"
-                  linkText="Email"
-                  linkUrl="mailto:?subject=The%20Noted%20Project&body=http://www.thenotedproject.org"
+                  linkType={ShareLinkType.Placeholder}
+                  linkText="Share"
                 />
-                <ShareLink
-                  linkType="facebook"
-                  linkText="Facebook"
-                  linkUrl="https://www.facebook.com/sharer/sharer.php?u=TheNotedProject.org"
-                />
-                <ShareLink
-                  linkType="twitter"
-                  linkText="Twitter"
-                  linkUrl="https://twitter.com/share?url=https%3A%2F%2Fwww.thenotedproject.org&text=Share%20The%20Noted%20Project:"
-                />
+                <div className="link-wrapper">
+                  {shareLinksWithTwitter.map(link => (
+                    <ShareLink
+                      key={link.type}
+                      linkType={link.type}
+                      linkText={link.text}
+                      linkUrl={siteUrl}
+                      linkTextContent={link.linkTextContent}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -109,6 +118,8 @@ export default props => (
             title
             slug
           }
+          siteUrl
+          twitterShareBody
         }
       }
     `}

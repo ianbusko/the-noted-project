@@ -5,11 +5,11 @@ import getShareLinkUrl from '../shareLinkUrls';
 import '../less/shareLink.less';
 
 const ShareLink = ({
-  linkType, linkText, linkUrl, openNewTab,
+  linkType, linkText, linkUrl, linkTextContent, openNewTab,
 }) => (
   <a
     className={`share-link ${GetShareLinkClasses(linkType)}`}
-    href={getShareLinkUrl(linkType, linkUrl)}
+    href={getShareLinkUrl(linkType, linkUrl, linkTextContent)}
     target={`${openNewTab ? '_blank' : ''}`}
     rel="noopener noreferrer"
   >
@@ -21,11 +21,13 @@ ShareLink.propTypes = {
   linkType: PropTypes.string.isRequired,
   linkText: PropTypes.string.isRequired,
   linkUrl: PropTypes.string,
+  linkTextContent: PropTypes.string,
   openNewTab: PropTypes.bool,
 };
 
 ShareLink.defaultProps = {
   linkUrl: '',
+  linkTextContent: '',
   openNewTab: true,
 };
 

@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Layout from '../components/layout';
-import withMetaData from '../layouts/withMetadata';
 import SlideArea from '../components/story/slideArea';
 import StoryMetaTags from '../components/story/storyMetaTags';
 import SlideContentTypes from '../slideContentTypes';
 import InfoCard from '../components/story/infoCard';
 import withScrollSnapping from '../components/story/withScrollSnapping';
 
-const LayoutWithMetaData = withMetaData(Layout);
 const SlideAreaWithScrolling = withScrollSnapping(SlideArea);
 
 class StoryPage extends React.Component {
@@ -71,7 +69,7 @@ class StoryPage extends React.Component {
 
     const isCardActive = activeCard !== '';
     return (
-      <LayoutWithMetaData
+      <Layout
         isStory
         infoCards={infoCards}
         isCardActive={isCardActive}
@@ -92,7 +90,7 @@ class StoryPage extends React.Component {
           previousStorySlug={story.previousStory.slug}
           onCardSelected={this.onCardSelected}
         />
-      </LayoutWithMetaData>
+      </Layout>
     );
   }
 }
