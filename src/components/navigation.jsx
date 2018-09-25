@@ -13,7 +13,6 @@ const shareLinks = [
   { type: ShareLinkType.Facebook, text: 'facebook' },
   { type: ShareLinkType.Twitter, text: 'twitter' },
 ];
-
 class Navigation extends React.PureComponent {
   render() {
     const {
@@ -42,9 +41,9 @@ class Navigation extends React.PureComponent {
         >
           <section className={`tnp-header ${showLightMenu ? 'light' : ''}`}>
             <div className={`header-logo-wrapper ${isPlain ? 'plain' : ''}`}>
-              <div className="header-logo">
+              <a className="header-logo" href="/">
                 <span style={{ display: 'none' }}>The Noted Project Home</span>
-              </div>
+              </a>
             </div>
             <nav className="header-links no-mobile">
               {links.map(link => (

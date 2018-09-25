@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import withMetadata from '../layouts/withMetadata';
 import Navigation from './navigation';
 import Footer from './footer';
 import Wrapper from './wrapper';
@@ -101,4 +102,6 @@ Layout.defaultProps = {
   storyTitle: '',
 };
 
-export default Layout;
+const LayoutWithMetaData = withMetadata(Layout);
+
+export default LayoutWithMetaData;

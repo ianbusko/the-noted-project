@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { get } from 'lodash';
 import Layout from '../components/layout';
-import withMetadata from '../layouts/withMetadata';
 import SplashBackground from '../components/splashBackground';
 import logo from '../images/logo-icon.svg';
 import SplashStoryLink from '../components/splashStoryLink';
 import '../less/splash.less';
-
-const LayoutWithMetadata = withMetadata(Layout);
 
 const IndexPage = ({ data }) => {
   const splashData = get(data, 'contentfulLayoutSplash');
@@ -17,7 +14,7 @@ const IndexPage = ({ data }) => {
     tagline, splashBackgroundVideo, splashMobileBackground, stories,
   } = splashData;
   return (
-    <LayoutWithMetadata isSplash>
+    <Layout isSplash>
       <section className="splash__title">
         <img
           src={logo}
@@ -45,7 +42,7 @@ const IndexPage = ({ data }) => {
         backgroundImageUrl={splashMobileBackground.file.url}
         videoUrl={splashBackgroundVideo}
       />
-    </LayoutWithMetadata>
+    </Layout>
   );
 };
 
