@@ -8,7 +8,7 @@ import '../../../less/videoSlideContent.less';
 
 const videoPlayerId = 'tnpVideo';
 
-class VideoSlideContent extends React.Component {
+class VideoSlideContent extends React.PureComponent {
   constructor(props) {
     super(props);
 
