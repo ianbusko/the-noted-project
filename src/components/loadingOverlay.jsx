@@ -1,7 +1,7 @@
 import React from 'react';
 import '../less/loadingOverlay.less';
 
-class LoadingOverlay extends React.Component {
+class LoadingOverlay extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = ({

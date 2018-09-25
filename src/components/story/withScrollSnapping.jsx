@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Scrolling from '../../Scrolling';
 import KeyCodes from '../../keys';
@@ -26,7 +26,7 @@ const isAccelerating = (samples) => {
 };
 
 function withScrollSnapping(WrappedComponent) {
-  class WithScrollSnapping extends Component {
+  class WithScrollSnapping extends React.PureComponent {
     constructor(props) {
       super(props);
 

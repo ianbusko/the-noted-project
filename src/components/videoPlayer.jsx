@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import CloseIcon from './closeIcon';
 import '../less/videoPlayer.less';
 
-// eslint-disable-next-line
-class VideoPlayer extends React.Component {
+class VideoPlayer extends React.PureComponent {
   render() {
     const {
       isActive, onCloseClick, videoUrl, videoPlayerId,

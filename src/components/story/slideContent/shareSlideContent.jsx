@@ -13,7 +13,7 @@ const shareLinks = [
 
 const getShareLinks = shareLinkTitle => shareLinks.map(link => (link.type === ShareLinkType.Twitter ? { ...link, sharingText: `Share ${shareLinkTitle}` } : link));
 
-class ShareSlideContent extends React.Component {
+class ShareSlideContent extends React.PureComponent {
   constructor(props) {
     super(props);
 

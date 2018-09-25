@@ -5,7 +5,7 @@ import NavTrigger from './navTrigger';
 import '../less/mobileMenu.less';
 import '../less/media.less';
 
-class MobileMenu extends React.Component {
+class MobileMenu extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
