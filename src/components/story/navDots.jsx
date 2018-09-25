@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import '../../less/navDots.less';
 
 class NavDots extends React.PureComponent {
-  componentWillUpdate(newval, oldval) {
-    console.log('update', newval, oldval);
-  }
-
   render() {
     const { targets, activeDot, onDotClicked } = this.props;
     return (
