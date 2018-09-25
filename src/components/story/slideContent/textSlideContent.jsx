@@ -4,7 +4,7 @@ import rehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import '../../../less/textSlideContent.less';
 
-class TextSlideContent extends React.Component {
+class TextSlideContent extends React.PureComponent {
   constructor(props) {
     super(props);
 

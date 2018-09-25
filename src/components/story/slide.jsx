@@ -22,52 +22,58 @@ const getSlideClasses = (slideContentType) => {
   }
 };
 
-const Slide = ({
-  backgroundImageUrl,
-  hoverText,
-  slideContent,
-  onCardSelected,
-  textSlideIndex,
-  textSlideTotal,
-  storyName,
-  isActive,
-  isTransitioning,
-  isLeaving,
-  storySlug,
-  nextStorySlug,
-  previousStorySlug,
-}) => (
-  <section className={`slide ${getSlideClasses(slideContent.__typename)}
-    ${isActive ? 'slide--active' : ''}
-    ${isTransitioning ? 'slide--transitioning' : ''}
-    ${isLeaving ? 'slide--leaving' : ''}`}
-  >
-    <div
-      className="slide-background"
-      style={{
-        backgroundImage: `url(https:${backgroundImageUrl})`,
-      }}
-    />
+class Slide extends React.PureComponent {
+  render() {
+    const {
+      backgroundImageUrl,
+      hoverText,
+      slideContent,
+      onCardSelected,
+      textSlideIndex,
+      textSlideTotal,
+      storyName,
+      isActive,
+      isTransitioning,
+      isLeaving,
+      storySlug,
+      nextStorySlug,
+      previousStorySlug,
+    } = this.props;
 
-    <div className="slide-background-cover" />
+    return (
+      <section className={`slide ${getSlideClasses(slideContent.__typename)}
+        ${isActive ? 'slide--active' : ''}
+        ${isTransitioning ? 'slide--transitioning' : ''}
+        ${isLeaving ? 'slide--leaving' : ''}`}
+      >
+        <div
+          className="slide-background"
+          style={{
+            backgroundImage: `url(https:${backgroundImageUrl})`,
+          }}
+        />
 
-    { hoverText && (
-      <div className="hover-text">
-        { hoverText }
-      </div>
-    )}
-    <SlideContentChild
-      slideContent={slideContent}
-      onCardSelected={onCardSelected}
-      textSlideIndex={textSlideIndex}
-      textSlideTotal={textSlideTotal}
-      storyName={storyName}
-      storySlug={storySlug}
-      nextStorySlug={nextStorySlug}
-      previousStorySlug={previousStorySlug}
-    />
-  </section>
-);
+        <div className="slide-background-cover" />
+
+        { hoverText && (
+          <div className="hover-text">
+            { hoverText }
+          </div>
+        )}
+        <SlideContentChild
+          slideContent={slideContent}
+          onCardSelected={onCardSelected}
+          textSlideIndex={textSlideIndex}
+          textSlideTotal={textSlideTotal}
+          storyName={storyName}
+          storySlug={storySlug}
+          nextStorySlug={nextStorySlug}
+          previousStorySlug={previousStorySlug}
+        />
+      </section>
+    );
+  }
+}
 
 Slide.propTypes = {
   // eslint-disable-next-line

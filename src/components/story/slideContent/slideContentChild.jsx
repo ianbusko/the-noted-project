@@ -66,27 +66,32 @@ function getSwitch(
   }
 }
 
-const SlideChildContent = ({
-  slideContent,
-  onCardSelected,
-  textSlideIndex,
-  textSlideTotal,
-  storyName,
-  storySlug,
-  nextStorySlug,
-  previousStorySlug,
-}) => (
-  <React.Fragment>
-    {getSwitch(slideContent,
+class SlideChildContent extends React.PureComponent {
+  render() {
+    const {
+      slideContent,
       onCardSelected,
       textSlideIndex,
       textSlideTotal,
       storyName,
       storySlug,
       nextStorySlug,
-      previousStorySlug)}
-  </React.Fragment>
-);
+      previousStorySlug,
+    } = this.props;
+    return (
+      <React.Fragment>
+        {getSwitch(slideContent,
+          onCardSelected,
+          textSlideIndex,
+          textSlideTotal,
+          storyName,
+          storySlug,
+          nextStorySlug,
+          previousStorySlug)}
+      </React.Fragment>
+    );
+  }
+}
 
 SlideChildContent.propTypes = {
   // eslint-disable-next-line

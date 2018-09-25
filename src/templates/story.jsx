@@ -11,7 +11,7 @@ import withScrollSnapping from '../components/story/withScrollSnapping';
 
 const SlideAreaWithScrolling = withScrollSnapping(SlideArea);
 
-class StoryPage extends React.Component {
+class StoryPage extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
