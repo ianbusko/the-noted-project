@@ -41,7 +41,6 @@ const Layout = ({
         isStory
           ? []
           : [
-            { name: 'og:url', content: 'Sample' },
             { name: 'og:type', content: 'website' },
             { name: 'og:title', content: metaData.siteTitle },
             { name: 'og:image', content: `https://${metaData.metaImage.file.url}` },
