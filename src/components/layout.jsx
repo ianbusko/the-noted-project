@@ -41,7 +41,7 @@ const Layout = ({
         isStory
           ? []
           : [
-            { name: 'og:url', content: 'Sample' },
+            { name: 'og:url', content: metaData.siteUrl },
             { name: 'og:type', content: 'website' },
             { name: 'og:title', content: metaData.siteTitle },
             { name: 'og:image', content: `https://${metaData.metaImage.file.url}` },
@@ -84,6 +84,7 @@ Layout.propTypes = {
   infoCards: PropTypes.arrayOf(PropTypes.object),
   metaData: PropTypes.shape({
     siteTitle: PropTypes.string.isRequired,
+    siteUrl: PropTypes.string.isRequired,
     metaDescription: PropTypes.string.isRequired,
     metaImage: PropTypes.shape({
       file: PropTypes.shape({

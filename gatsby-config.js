@@ -3,9 +3,6 @@ const AutoPrefixer = require('autoprefixer');
 const Contentful = require('./.contentful.json');
 
 module.exports = {
-  siteMetadata: {
-    title: 'The Noted Project',
-  },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-eslint',
