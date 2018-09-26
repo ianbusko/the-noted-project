@@ -24,12 +24,12 @@ class Navigation extends React.PureComponent {
         slug: link.slug ? link.slug : '',
         title: link.title,
       }));
-    const siteUrl = get(data, 'contentfulSiteMetaContent.siteUrl');
-    const shareLinksWithTwitter = shareLinks.map(
+    const socialLinks = shareLinks.map(
       link => (link.type === ShareLinkType.Twitter
         ? { ...link, linkTextContent: twitterShareBody }
         : link),
     );
+    const siteUrl = get(data, 'contentfulSiteMetaContent.siteUrl');
     return (
       <>
         <header
@@ -63,7 +63,7 @@ class Navigation extends React.PureComponent {
                     linkText="Share"
                   />
                   <div className="link-wrapper">
-                    {shareLinksWithTwitter.map(link => (
+                    {socialLinks.map(link => (
                       <ShareLink
                         key={link.type}
                         linkType={link.type}
@@ -81,6 +81,12 @@ class Navigation extends React.PureComponent {
         <MobileMenu
           links={links}
           isPlain={isPlain}
+          socialLinks={
+            socialLinks
+              .filter(link => link.type === ShareLinkType.Twitter
+                || link.type === ShareLinkType.Facebook)
+              .map(link => ({ ...link, siteUrl }))
+          }
         />
       </>
     );
