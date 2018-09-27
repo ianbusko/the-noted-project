@@ -19,7 +19,7 @@ const ContactContent = ({ emailAddress, emailSubject, bodyCopy }) => (
     />
     <Button
       buttonText="Contact Us"
-      url={`mailto:${emailAddress}?subject=${encodeURI(emailSubject)}`}
+      url={`mailto:${emailAddress}?subject=${emailSubject}`}
     />
   </article>
 );
