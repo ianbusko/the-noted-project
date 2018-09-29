@@ -3,9 +3,6 @@ const AutoPrefixer = require('autoprefixer');
 const dotenv = require('dotenv').config();
 
 module.exports = {
-  siteMetadata: {
-    title: 'The Noted Project',
-  },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-eslint',

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import rehypeReact from 'rehype-react';
+import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import '../../../less/textSlideContent.less';
 
@@ -10,13 +10,11 @@ class TextSlideContent extends React.PureComponent {
 
     this.onCardClicked = this.onCardClicked.bind(this);
 
-    // eslint-disable-next-line
-    this.renderAst = new rehypeReact({
+    this.renderAst = new RehypeReact({
       createElement: React.createElement,
       components: {
         a: fields => (
           <a
-            className="Hello-there"
             href={fields.href}
             onClick={this.onCardClicked.bind(fields.href)}
           >

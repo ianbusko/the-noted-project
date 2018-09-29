@@ -21,6 +21,8 @@ class LoadingOverlay extends React.PureComponent {
 
     if (!isLoaded) {
       window.addEventListener('load', this.handleWindowLoaded);
+    } else {
+      document.querySelector('body').classList.add('loaded');
     }
     document.querySelector('#loadingIcon').addEventListener('animationiteration', this.handleIterationComplete);
   }
@@ -38,10 +40,14 @@ class LoadingOverlay extends React.PureComponent {
   }
 
   handleIterationComplete() {
+    const { loaded } = this.state;
     this.setState({
       hasIterated: true,
     });
     document.querySelector('#loadingIcon').removeEventListener('animationiteration', this.handleIterationComplete);
+    if (loaded) {
+      document.querySelector('body').classList.add('loaded');
+    }
   }
 
   render() {

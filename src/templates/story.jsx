@@ -60,7 +60,7 @@ class StoryPage extends React.PureComponent {
         <InfoCard
           headerImageUrl={card.headerImage.file.url}
           cardTitle={card.title}
-          cardContent={card.text.childMarkdownRemark.html}
+          cardContentAst={card.text.childMarkdownRemark.htmlAst}
           isActive={card.slug === activeCard}
           onCloseClick={this.onCardClosed}
           key={card.slug}
