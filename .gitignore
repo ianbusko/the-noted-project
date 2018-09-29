@@ -9,4 +9,4 @@ yarn.lock
 .DS_Store
 
 # Secret Config
-.contentful.json
+.env

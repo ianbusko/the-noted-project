@@ -1,6 +1,6 @@
 const PostCssPresetEnv = require('postcss-preset-env');
 const AutoPrefixer = require('autoprefixer');
-const Contentful = require('./.contentful.json');
+const dotenv = require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
@@ -18,7 +18,10 @@ module.exports = {
     'gatsby-transformer-remark',
     {
       resolve: 'gatsby-source-contentful',
-      options: Contentful,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID || '',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
+      },
     },
     {
       resolve: 'gatsby-plugin-google-fonts',
