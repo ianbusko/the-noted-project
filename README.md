@@ -1,19 +1,17 @@
 # The Noted Project
 
 ## Contentful
-Create a contentful config called `.contentful.json` with the structure:
+Create a '.env' file with the values:
 ```
-{
-  "spaceId": "",
-  "accessToken": ""
-}
+CONTENTFUL_SPACE_ID=your-space-id
+CONTENTFUL_ACCESS_TOKEN=your-access-token
 ```
 
 ## Publish
-To be determined.
+For surge, use `gatsby build` and then `surge public/`. 
 
 ## Developing
 ``` bash
 gatsby develop
 ```
-Runs on port 8080 by default.
+Runs on port 8000 by default.
