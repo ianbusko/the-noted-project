@@ -31,7 +31,6 @@ const InfoCard = ({
       onCloseClick={onCloseClick}
     />
     <CardHeader imageUrl={headerImageUrl} title={cardTitle} />
-    {/* <div className="card-content" dangerouslySetInnerHTML={{ __html: cardContent }} /> */}
     <div className="card-content">
       {renderAst(cardContentAst)}
     </div>
