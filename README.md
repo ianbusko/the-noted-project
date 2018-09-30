@@ -9,6 +9,7 @@ CONTENTFUL_ACCESS_TOKEN=your-access-token
 
 ## Publish
 For surge, use `gatsby build` and then `surge public/`. 
+The `master` branch will automatically publish to netlify.
 
 ## Developing
 ``` bash
