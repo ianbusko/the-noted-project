@@ -44,7 +44,7 @@ const Layout = ({
             { name: 'og:url', content: metaData.siteUrl },
             { name: 'og:type', content: 'website' },
             { name: 'og:title', content: metaData.siteTitle },
-            { name: 'og:image', content: `https://${metaData.metaImage.file.url}` },
+            { name: 'og:image', content: `https:${metaData.metaImage.file.url}` },
             { name: 'og:description', content: metaData.metaDescription },
           ]}
       link={[
