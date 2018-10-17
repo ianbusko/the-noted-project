@@ -60,6 +60,7 @@ function withScrollSnapping(WrappedComponent) {
       window.removeEventListener('resize', this.handleWindowResize);
       window.removeEventListener('load', this.handleContentLoaded);
       window.removeEventListener('keydown', this.handleKeys);
+      document.querySelector('body').style.overflow = '';
     }
 
     setBodyOverflow() {
