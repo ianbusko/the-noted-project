@@ -4,6 +4,6 @@ const SlideContentTypes = {
   TextContent: 'ContentfulSlideContentText',
   QuoteContent: 'ContentfulSlideContentQuote',
   ShareContent: 'ContentfulSlideContentShare',
-};
+}
 
-export default SlideContentTypes;
+export default SlideContentTypes

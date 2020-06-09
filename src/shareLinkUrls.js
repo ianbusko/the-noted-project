@@ -1,16 +1,20 @@
-import { ShareLinkType } from './shareLinkTypes';
+import { ShareLinkType } from './shareLinkTypes'
 
 function getShareLinkUrl(type, url, sharingText) {
   switch (type) {
     case ShareLinkType.Facebook:
-      return encodeURI(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+      return encodeURI(`https://www.facebook.com/sharer/sharer.php?u=${url}`)
     case ShareLinkType.Email:
-      return encodeURI(`mailto:?subject=${'The Noted Project'}&body=${url}`);
+      return encodeURI(`mailto:?subject=${'The Noted Project'}&body=${url}`)
     case ShareLinkType.Twitter:
-      return encodeURI(`https://twitter.com/intent/tweet?url=https://${encodeURI(url)}&text=${sharingText}`);
+      return encodeURI(
+        `https://twitter.com/intent/tweet?url=https://${encodeURI(
+          url
+        )}&text=${sharingText}`
+      )
     default:
-      return url;
+      return url
   }
 }
 
-export default getShareLinkUrl;
+export default getShareLinkUrl

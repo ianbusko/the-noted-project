@@ -4,23 +4,23 @@ const ShareLinkType = {
   Email: 'email',
   Twitter: 'twitter',
   Placeholder: 'placeholder',
-};
+}
 
 function GetShareLinkClasses(type) {
   switch (type) {
     case ShareLinkType.Email:
-      return 'email';
+      return 'email'
     case ShareLinkType.Facebook:
-      return 'facebook';
+      return 'facebook'
     case ShareLinkType.Twitter:
-      return 'twitter';
+      return 'twitter'
     case ShareLinkType.Story:
-      return 'story';
+      return 'story'
     case ShareLinkType.Placeholder:
-      return 'placeholder';
+      return 'placeholder'
     default:
-      return '';
+      return ''
   }
 }
 
-export { ShareLinkType, GetShareLinkClasses };
+export { ShareLinkType, GetShareLinkClasses }
