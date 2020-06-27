@@ -18,10 +18,11 @@ class Navigation extends React.PureComponent {
     const {
       data, isPlain, isSplash, isStory, showLightMenu,
     } = this.props;
+
     const twitterShareBody = get(data, 'contentfulSiteMetaContent.twitterShareBody');
     const links = get(data, 'contentfulSiteMetaContent.links')
       .map(link => ({
-        slug: link.slug ? link.slug : '',
+        slug: link.slug ? `/${link.slug}` : '',
         title: link.title,
       }));
     const siteUrl = get(data, 'contentfulSiteMetaContent.siteUrl');
